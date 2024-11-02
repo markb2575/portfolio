@@ -15,9 +15,11 @@ function useDarkTheme() {
     useEffect(() => {
         if (typeof window !== 'undefined') {
             localStorage.setItem('darkTheme', JSON.stringify(darkTheme));
-            darkTheme
-                ? document.documentElement.classList.add('dark')
-                : document.documentElement.classList.remove('dark');
+            if (darkTheme) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
         }
     }, [darkTheme]);
 

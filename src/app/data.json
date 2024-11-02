@@ -44,6 +44,8 @@
         {
             "title": "Full-Stack Software Engineer Intern",
             "company": "Clutch Holdings",
+            "start_date": "May 2023",
+            "end_date": "Aug 2023",
             "details": [
                 "Created and maintained database queries and API endpoints using PostgreSQL and Java.",
                 "Developed and maintained frontend pages using Scala, React, JavaScript, HTML, and CSS.",
@@ -53,6 +55,29 @@
                 "Effectively managed multiple tickets to minimize downtime.",
                 "Collaborated with team members to discuss ideas, clarify issues, and communicate updates.",
                 "Utilized GitHub, Jenkins, and Jira for code management, deployment, and documentation."
+            ]
+        }
+    ],
+    "education": [
+        {
+            "school": "Rutgers New Brunswick",
+            "major": "Computer Science",
+            "start_date": "Sep 2020",
+            "end_date": "May 2024",
+            "gpa": "3.4",
+            "courses": [
+                "Artificial Intelligence",
+                "Information and Data Management",
+                "Software Engineering",
+                "Internet Technology",
+                "Principles of Programming Languages",
+                "Software Methodology",
+                "Computer Algorithms",
+                "Systems Programming",
+                "Discrete Structures I & II",
+                "Computer Architecture",
+                "Data Structures",
+                "Introduction to Computer Science"
             ]
         }
     ],

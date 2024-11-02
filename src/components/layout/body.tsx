@@ -1,7 +1,8 @@
 import data from '../../app/data.json';
 type data = {
     skills: { "language/framework": string[]; "technology": string[], "additional": string[] };
-    experiences: { title: string; company: string; details: string[] }[];
+    experiences: { title: string; company: string; details: string[]; start_date: string; end_date: string; }[];
+    education: { school: string; major: string; courses: string[]; start_date: string; end_date: string; gpa: string }[];
     projects: { name: string; description: string }[];
 };
 export default function Body() {
@@ -26,20 +27,57 @@ export default function Body() {
                         </div>
                     ))}
                 </div>
+                <h2 className="section">Relevant Courses</h2>
+                <div className="flex flex-wrap gap-2 mb-6 just">
+                    {data?.education.map((item, i) =>
+                        item.courses.map((course, index) => (
+                            <div key={`${i}-${index}`} className="skill-bubble">
+                                {course}
+                            </div>
+                        ))
+                    )}
+                </div>
             </div>
-         
+
             <div className='w-1/3 mr-10'>
                 <h2 className="section">Experience</h2>
-                <div className="flex gap-4 mb-6">
+                <div className="gap-4 mb-6">
                     {data?.experience.map((experience, index) => (
-                        <div key={index} className="p-4 rounded-lg shadow-md skill-bubble ">
-                            <h3 className="font-semibold">{experience.title}</h3>
-                            <p className="text-sm">{experience.company}</p>
+                        <div key={index} className="p-4 rounded-lg shadow-md skill-bubble">
+                            <div className='flex justify-between'>
+                                <div>
+                                    <h3 className="font-semibold">{experience.title}</h3>
+                                    <p className="text-sm">{experience.company}</p>
+                                </div>
+                                <div>
+                                    {experience.start_date} - {experience.end_date}
+                                </div>
+                            </div>
+                            <div className="border-t flex-grow border-slate-400 dark:border-slate-600 my-2" />
                             <ul className="list-disc list-inside text-sm mt-2 text-left">
                                 {experience.details.map((detail, i) => (
                                     <li key={i}>{detail}</li>
                                 ))}
                             </ul>
+                        </div>
+                    ))}
+                </div>
+                <h2 className="section">Education</h2>
+                <div className="gap-4 mb-6">
+                    {data?.education.map((item, index) => (
+                        <div key={index} className="p-4 rounded-lg shadow-md skill-bubble flex justify-between">
+                            <div>
+                                <h3 className="font-semibold">{item.school}</h3>
+                                <p className="text-base">{item.major}</p>
+                            </div>
+                            <div>
+                                <div>
+                                    {item.start_date} - {item.end_date}
+                                </div>
+                                <div className='text-end text-base'>
+                                    {item.gpa} GPA
+                                </div>
+                            </div>
                         </div>
                     ))}
                 </div>
@@ -50,12 +88,13 @@ export default function Body() {
                     {data?.projects.map((project, index) => (
                         <div key={index} className="p-4 rounded-lg shadow-md w-52 skill-bubble">
                             <h3 className="font-semibold">{project.name}</h3>
+                            <div className="border-t flex-grow border-slate-400 dark:border-slate-600 my-2" />
                             <p className="text-sm">{project.description}</p>
                         </div>
                     ))}
                 </div>
             </div>
-            
+
 
         </div>
     );
