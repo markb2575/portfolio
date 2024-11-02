@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+  }
+}
+
+@layer components {
+    .background {
+        @apply 
+        dark:bg-zinc-700 bg-zinc-300 transition-colors
+        w-screen h-screen p-10;
+    }
+    .header {
+        @apply
+        dark:text-zinc-800 text-zinc-400 transition-colors
+        flex flex-row items-center justify-between;
+    }
+    .title {
+        @apply
+        font-montserrat
+        font-extralight
+        dark:text-zinc-300 text-zinc-700 transition-colors
+        text-6xl
+        text-center;
+    }
+    .section {
+        @apply
+        font-montserrat
+        font-light
+        dark:text-zinc-300 text-zinc-700 transition-colors
+        text-4xl
+        mb-4
+    }
+    .theme-toggle {
+        @apply
+        flex items-center justify-end;
+    }
+    .theme-toggle-icon {
+        @apply
+        dark:text-zinc-700 text-zinc-300 transition-colors
+        text-lg font-bold size-6 mr-3;
+    }
+    .gradient-bg {
+        @apply
+        dark:bg-gradient-to-br dark:from-zinc-400 dark:to-zinc-500 bg-gradient-to-br from-zinc-500 to-zinc-600
+    }
+    .gradient-text {
+        @apply
+        dark:bg-gradient-to-br dark:from-zinc-400 dark:to-zinc-500 bg-gradient-to-br from-zinc-500 to-zinc-600
+    }
+    .skill-bubble {
+        @apply
+        px-2 gradient-bg rounded-full shadow-md text-center
+        font-montserrat
+        font-normal
+        dark:text-zinc-800 text-zinc-300 transition-colors
+        text-lg
+    }
+}

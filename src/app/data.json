@@ -1,0 +1,85 @@
+{
+    "skills": {
+        "language/framework": [
+            "Java",
+            "SQL",
+            "Python",
+            "JavaScript",
+            "React",
+            "React Native",
+            "HTML",
+            "CSS",
+            "Bootstrap",
+            "JQuery",
+            "Scala",
+            "C",
+            "C++",
+            "PostgreSQL",
+            "GraphQL",
+            "Mockito",
+            "JUnit",
+            "Selenium",
+            "PyTorch"
+        ],
+        "technology": [
+            "Git/Github",
+            "Docker",
+            "AWS",
+            "Express",
+            "Jenkins",
+            "Jira",
+            "Postman"
+        ],
+        "additional": [
+            "Machine Learning",
+            "Web Scraping",
+            "Neural Networks",
+            "Training Models",
+            "Concurrency",
+            "LLM",
+            "Transformer"
+        ]
+    },
+    "experience": [
+        {
+            "title": "Full-Stack Software Engineer Intern",
+            "company": "Clutch Holdings",
+            "details": [
+                "Created and maintained database queries and API endpoints using PostgreSQL and Java.",
+                "Developed and maintained frontend pages using Scala, React, JavaScript, HTML, and CSS.",
+                "Designed unit and integration tests to ensure smooth deployment.",
+                "Optimized API calls, reducing loading times of large tables by ~80%.",
+                "Automated manual tasks for non-technical users by developing new web pages.",
+                "Effectively managed multiple tickets to minimize downtime.",
+                "Collaborated with team members to discuss ideas, clarify issues, and communicate updates.",
+                "Utilized GitHub, Jenkins, and Jira for code management, deployment, and documentation."
+            ]
+        }
+    ],
+    "projects": [
+        {
+            "name": "Jukeboxd",
+            "description": "A social music platform built with React, Express, and MariaDB, allowing users to track, rate, and review music. Includes paginated search, encrypted authentication, and a modern UI with CSS and Bootstrap."
+        },
+        {
+            "name": "AI Stock Predicter",
+            "description": "An AI model using Keras in Python to predict stock prices over a 30-day period based on S&P 500 data from the yfinance API, utilizing LSTM for predictions."
+        },
+        {
+            "name": "Stock Scanner",
+            "description": "A tool that ranks tickers based on volatility, volume, and float, displaying sorted results in a Tkinter GUI."
+        },
+        {
+            "name": "Gap Scanner",
+            "description": "An application that identifies price gaps in stock tickers, displaying largest gaps in premarket, using Yahoo Finance API with a Tkinter GUI."
+        },
+        {
+            "name": "till-failure",
+            "description": "A React Native gym workout app that recommends weights based on progress. Features a database of 500 exercises, filtering by target muscles, and modern UI design."
+        },
+        {
+            "name": "Translit Copt",
+            "description": "A software using Tesseract OCR and Python to detect foreign text from images and transliterate to English with a custom library."
+        }
+    ]
+}
