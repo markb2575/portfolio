@@ -7,8 +7,8 @@ type data = {
 };
 export default function Body() {
     return (
-        <div className="px-10 flex">
-            <div className='w-1/3 mr-10'>
+        <div className="px-10 flex flex-col md:flex-row">
+            <div className='w-full md:w-1/3 mr-10 mb-10 md:mb-0'>
                 <h2 className="section">Skills</h2>
                 <div className="flex flex-wrap gap-2 mb-6">
                     {data?.skills['language/framework'].map((skill, index) => (
@@ -28,7 +28,7 @@ export default function Body() {
                     ))}
                 </div>
                 <h2 className="section">Relevant Courses</h2>
-                <div className="flex flex-wrap gap-2 mb-6 just">
+                <div className="flex flex-wrap gap-2 mb-6">
                     {data?.education.map((item, i) =>
                         item.courses.map((course, index) => (
                             <div key={`${i}-${index}`} className="skill-bubble">
@@ -39,7 +39,7 @@ export default function Body() {
                 </div>
             </div>
 
-            <div className='w-1/3 mr-10'>
+            <div className='w-full md:w-1/3 mr-10 mb-10 md:mb-0'>
                 <h2 className="section">Experience</h2>
                 <div className="gap-4 mb-6">
                     {data?.experience.map((experience, index) => (
@@ -82,7 +82,8 @@ export default function Body() {
                     ))}
                 </div>
             </div>
-            <div className='w-1/3'>
+
+            <div className='w-full md:w-1/3'>
                 <h2 className="section">Projects</h2>
                 <div className="flex flex-wrap gap-4">
                     {data?.projects.map((project, index) => (
@@ -94,8 +95,7 @@ export default function Body() {
                     ))}
                 </div>
             </div>
-
-
         </div>
+
     );
 }
