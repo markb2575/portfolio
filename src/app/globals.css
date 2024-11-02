@@ -18,7 +18,8 @@ body {
     .background {
         @apply 
         dark:bg-zinc-700 bg-zinc-300 transition-colors
-        w-screen h-screen p-10;
+        min-h-screen
+        p-10;
     }
     .header {
         @apply
@@ -54,10 +55,7 @@ body {
         @apply
         dark:bg-gradient-to-br dark:from-zinc-400 dark:to-zinc-500 bg-gradient-to-br from-zinc-500 to-zinc-600
     }
-    .gradient-text {
-        @apply
-        dark:bg-gradient-to-br dark:from-zinc-400 dark:to-zinc-500 bg-gradient-to-br from-zinc-500 to-zinc-600
-    }
+
     .skill-bubble {
         @apply
         px-2 gradient-bg rounded-full shadow-md text-center

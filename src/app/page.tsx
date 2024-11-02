@@ -1,6 +1,5 @@
 "use client"
 import { Header, Body } from "@/components/layout";
-import { useState, useEffect } from "react";
 import useDarkTheme from "../app/hooks/useDarkTheme";
 
 

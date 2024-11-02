@@ -1,6 +1,5 @@
 "use client"
 import * as Switch from "@radix-ui/react-switch";
-import { useState, useEffect } from "react";
 import { FaMoon, FaSun, FaGithub, FaLinkedin } from 'react-icons/fa';
 
 export default function Header({darkTheme, handleMode}:{darkTheme:boolean, handleMode:()=>void}) {
