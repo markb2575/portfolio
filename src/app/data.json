@@ -13,13 +13,16 @@
             "JQuery",
             "Scala",
             "C",
-            "C++",
+            "NumPy",
             "PostgreSQL",
             "GraphQL",
             "Mockito",
             "JUnit",
             "Selenium",
-            "PyTorch"
+            "PyTorch",
+            "Next.js",
+            "JSON",
+            "Tailwind"
         ],
         "technology": [
             "Git/Github",
@@ -47,20 +50,36 @@
             "start_date": "May 2023",
             "end_date": "Aug 2023",
             "details": [
-                "Created and maintained database queries and API endpoints using PostgreSQL and Java.",
-                "Developed and maintained frontend pages using Scala, React, JavaScript, HTML, and CSS.",
-                "Designed unit and integration tests to ensure smooth deployment.",
-                "Optimized API calls, reducing loading times of large tables by ~80%.",
-                "Automated manual tasks for non-technical users by developing new web pages.",
-                "Effectively managed multiple tickets to minimize downtime.",
-                "Collaborated with team members to discuss ideas, clarify issues, and communicate updates.",
-                "Utilized GitHub, Jenkins, and Jira for code management, deployment, and documentation."
+                "PostgreSQL",
+                "Java",
+                "Spring Boot",
+                "Scala",
+                "React",
+                "JavaScript",
+                "HTML",
+                "CSS",
+                "Test Design",
+                "Git",
+                "Jenkins",
+                "Jira",
+                "Scrum",
+                "JQuery",
+                "ASP"
             ]
+        }
+    ],
+    "certifications": [
+        {
+            "name": "AWS Certified Developer - Associate",
+            "start_date": "Oct 2024",
+            "end_date": "Oct 2027",
+            "url": "https://www.credly.com/badges/5a53eb5b-541e-471b-8897-05ce81639165/public_url",
+            "description": "Able to develop, deploy, and debug cloud-based applications that follow AWS best practices."
         }
     ],
     "education": [
         {
-            "school": "Rutgers New Brunswick",
+            "school": "Rutgers, New Brunswick",
             "major": "Computer Science",
             "start_date": "Sep 2020",
             "end_date": "May 2024",
@@ -84,59 +103,87 @@
     "projects": [
         {
             "name": "till-failure",
-            "url": "https://github.com/markb2575/till-failure"
+            "url": "https://github.com/markb2575/till-failure",
+            "skills": ["Web Scraping","React Native"],
+            "description": "A fitness tracking application"
         },
         {
             "name": "Portfolio",
-            "url": "https://github.com/markb2575/resume"
+            "url": "https://github.com/markb2575/resume",
+            "skills": ["Next.js","Tailwind"],
+            "description": "Personal portfolio website"
         },
         {
             "name": "Transformer-Model",
-            "url": "https://github.com/markb2575/Transformer-Model"
+            "url": "https://github.com/markb2575/Transformer-Model",
+            "skills": ["Python", "Jupyter Notebook"],
+            "description": "Implementation of a transformer model"
         },
         {
             "name": "remove-osu-images",
-            "url": "https://github.com/markb2575/remove-osu-images"
+            "url": "https://github.com/markb2575/remove-osu-images",
+            "skills": ["Python"],
+            "description": "Tool to remove osu! game images"
         },
         {
             "name": "LinkedIn-EasyApply-Automation",
-            "url": "https://github.com/markb2575/LinkedIn-EasyApply-Automation"
+            "url": "https://github.com/markb2575/LinkedIn-EasyApply-Automation",
+            "skills": ["Python", "Selenium"],
+            "description": "Automates LinkedIn job applications"
         },
         {
             "name": "CS440-Classification",
-            "url": "https://github.com/markb2575/CS440-Classification"
+            "url": "https://github.com/markb2575/CS440-Classification",
+            "skills": ["Python","NumPy","Machine Learning"],
+            "description": "Machine learning classification project"
         },
         {
             "name": "Read-Coptic",
-            "url": "https://github.com/markb2575/Read-Coptic"
+            "url": "https://github.com/markb2575/Read-Coptic",
+            "skills": ["React"],
+            "description": "Coptic language learning tool"
         },
         {
             "name": "CS440-FTR",
-            "url": "https://github.com/markb2575/CS440-FTR"
+            "url": "https://github.com/markb2575/CS440-FTR",
+            "skills": ["Java","AI"],
+            "description": "Various A* search implementations simulating a 'fog of war'"
         },
         {
             "name": "Jukeboxd",
-            "url": "https://github.com/markb2575/Jukeboxd"
+            "url": "https://github.com/markb2575/Jukeboxd",
+            "skills": ["MariaDB","Express","React","CSV"],
+            "description": "Music playlist creation and sharing platform"
         },
         {
             "name": "GapScanner",
-            "url": "https://github.com/markb2575/GapScanner"
+            "url": "https://github.com/markb2575/GapScanner",
+            "skills": ["Python","Pandas","Tkinter","Threading"],
+            "description": "Stock market analysis tool"
         },
         {
             "name": "StockScanner",
-            "url": "https://github.com/markb2575/StockScanner"
+            "url": "https://github.com/markb2575/StockScanner",
+            "skills": ["Python","Pandas","Tkinter","Threading"],
+            "description": "Stock market analysis tool"
         },
         {
             "name": "AI-Stock-Predictor",
-            "url": "https://github.com/markb2575/AI-Stock-Predictor"
+            "url": "https://github.com/markb2575/AI-Stock-Predictor",
+            "skills": ["LSTM","Pandas","Keras","Tensorflow"],
+            "description": "AI-based stock price prediction"
         },
         {
             "name": "translit-copt",
-            "url": "https://github.com/markb2575/translit-copt"
+            "url": "https://github.com/markb2575/translit-copt",
+            "skills": ["Python"],
+            "description": "Coptic transliteration tool"
         },
         {
             "name": "OpenAI_DiscordBot",
-            "url": "https://github.com/markb2575/OpenAI_DiscordBot"
+            "url": "https://github.com/markb2575/OpenAI_DiscordBot",
+            "skills": ["Python"],
+            "description": "Discord bot powered by OpenAI"
         }
 
     ]

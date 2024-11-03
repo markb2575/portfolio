@@ -1,5 +1,5 @@
 "use client"
-import { Header, Body } from "@/components/layout";
+import { Header, Body, Tab } from "@/components/layout";
 import useDarkTheme from "../app/hooks/useDarkTheme";
 
 
@@ -10,6 +10,7 @@ export default function Home() {
 
     return (
         <div className="background">
+            <Tab />
             <Header darkTheme={darkTheme} handleMode={handleMode}/>
             <Body />
         </div>
