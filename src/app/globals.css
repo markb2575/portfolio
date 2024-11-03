@@ -16,7 +16,7 @@ body {
 
 @layer components {
     .background {
-        @apply dark:bg-slate-900 bg-white transition-colors min-h-screen px-[5%];
+        @apply dark:bg-slate-900 bg-white transition-colors min-h-screen px-[5%] py-10;
     }
 
     .header {

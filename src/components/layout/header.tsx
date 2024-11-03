@@ -7,9 +7,9 @@ export default function Header({darkTheme, handleMode}:{darkTheme:boolean, handl
     return (
         <div>
             <div className="header">
-                <div className="border-t flex-grow border-slate-500 m-10"></div>
-                <h1 className="title">Mark Bassily</h1>
-                <div className="border-t flex-grow border-slate-500 m-10"></div>
+                <div className="border-t flex-grow border-slate-500 mx-10"></div>
+                <h1 className="title mb-5">Mark Bassily</h1>
+                <div className="border-t flex-grow border-slate-500 mx-10"></div>
             </div>
             <div className="flex flex-row justify-between mb-5">
                 <div className="flex flex-row">

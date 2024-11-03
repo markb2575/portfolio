@@ -3,7 +3,7 @@ type data = {
     skills: { "language/framework": string[]; "technology": string[], "additional": string[] };
     experiences: { title: string; company: string; details: string[]; start_date: string; end_date: string; }[];
     education: { school: string; major: string; courses: string[]; start_date: string; end_date: string; gpa: string }[];
-    projects: { name: string; description: string }[];
+    projects: { name: string; url: string }[];
 };
 export default function Body() {
     return (
@@ -87,10 +87,8 @@ export default function Body() {
                 <h2 className="section">Projects</h2>
                 <div className="flex flex-wrap gap-4">
                     {data?.projects.map((project, index) => (
-                        <div key={index} className="p-4 rounded-lg shadow-md w-52 skill-bubble">
-                            <h3 className="font-semibold">{project.name}</h3>
-                            <div className="border-t flex-grow border-slate-400 dark:border-slate-600 my-2" />
-                            <p className="text-sm">{project.description}</p>
+                        <div key={index} className="skill-bubble cursor-pointer" onClick={() => window.location.href = project.url}>
+                            {project.name}
                         </div>
                     ))}
                 </div>

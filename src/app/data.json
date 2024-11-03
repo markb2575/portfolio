@@ -43,7 +43,7 @@
     "experience": [
         {
             "title": "Full-Stack Software Engineer Intern",
-            "company": "Clutch Holdings",
+            "company": "Clutch",
             "start_date": "May 2023",
             "end_date": "Aug 2023",
             "details": [
@@ -83,28 +83,61 @@
     ],
     "projects": [
         {
-            "name": "Jukeboxd",
-            "description": "A social music platform built with React, Express, and MariaDB, allowing users to track, rate, and review music. Includes paginated search, encrypted authentication, and a modern UI with CSS and Bootstrap."
-        },
-        {
-            "name": "AI Stock Predicter",
-            "description": "An AI model using Keras in Python to predict stock prices over a 30-day period based on S&P 500 data from the yfinance API, utilizing LSTM for predictions."
-        },
-        {
-            "name": "Stock Scanner",
-            "description": "A tool that ranks tickers based on volatility, volume, and float, displaying sorted results in a Tkinter GUI."
-        },
-        {
-            "name": "Gap Scanner",
-            "description": "An application that identifies price gaps in stock tickers, displaying largest gaps in premarket, using Yahoo Finance API with a Tkinter GUI."
-        },
-        {
             "name": "till-failure",
-            "description": "A React Native gym workout app that recommends weights based on progress. Features a database of 500 exercises, filtering by target muscles, and modern UI design."
+            "url": "https://github.com/markb2575/till-failure"
         },
         {
-            "name": "Translit Copt",
-            "description": "A software using Tesseract OCR and Python to detect foreign text from images and transliterate to English with a custom library."
+            "name": "Portfolio",
+            "url": "https://github.com/markb2575/resume"
+        },
+        {
+            "name": "Transformer-Model",
+            "url": "https://github.com/markb2575/Transformer-Model"
+        },
+        {
+            "name": "remove-osu-images",
+            "url": "https://github.com/markb2575/remove-osu-images"
+        },
+        {
+            "name": "LinkedIn-EasyApply-Automation",
+            "url": "https://github.com/markb2575/LinkedIn-EasyApply-Automation"
+        },
+        {
+            "name": "CS440-Classification",
+            "url": "https://github.com/markb2575/CS440-Classification"
+        },
+        {
+            "name": "Read-Coptic",
+            "url": "https://github.com/markb2575/Read-Coptic"
+        },
+        {
+            "name": "CS440-FTR",
+            "url": "https://github.com/markb2575/CS440-FTR"
+        },
+        {
+            "name": "Jukeboxd",
+            "url": "https://github.com/markb2575/Jukeboxd"
+        },
+        {
+            "name": "GapScanner",
+            "url": "https://github.com/markb2575/GapScanner"
+        },
+        {
+            "name": "StockScanner",
+            "url": "https://github.com/markb2575/StockScanner"
+        },
+        {
+            "name": "AI-Stock-Predictor",
+            "url": "https://github.com/markb2575/AI-Stock-Predictor"
+        },
+        {
+            "name": "translit-copt",
+            "url": "https://github.com/markb2575/translit-copt"
+        },
+        {
+            "name": "OpenAI_DiscordBot",
+            "url": "https://github.com/markb2575/OpenAI_DiscordBot"
         }
+
     ]
 }

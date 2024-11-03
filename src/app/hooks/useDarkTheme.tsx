@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 function useDarkTheme() {
-    const [darkTheme, setDarkTheme] = useState(false);
+    const [darkTheme, setDarkTheme] = useState(true);
     const [isLoading, setLoading] = useState(true);
 
     useEffect(() => {
