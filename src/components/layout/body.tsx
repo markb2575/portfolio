@@ -14,7 +14,7 @@ export default function Body() {
         <div className="px-10 flex flex-col">
 
             {/* Skills */}
-            <div className='w-full'>
+            <div id="skills-section" className='w-full'>
                 <h2 className="section">Skills</h2>
                 <div className="flex flex-wrap gap-2 mb-6">
                     {data?.skills['language/framework'].map((skill, index) => (
@@ -30,7 +30,7 @@ export default function Body() {
             </div>
 
             {/* Experience */}
-            <h2 className="section">Experience</h2>
+            <h2 id="experience-section" className="section">Experience</h2>
             <div className="gap-4 mb-6">
                 {data?.experience.map((experience, index) => (
                     <Card key={index} className="h-full w-full">
@@ -53,7 +53,7 @@ export default function Body() {
             </div>
 
             {/* Education */}
-            <h2 className="section">Education</h2>
+            <h2 id="education-section" className="section">Education</h2>
             <div className="gap-4 mb-6">
                 {data?.education.map((item, index) => (
                     <Card key={index} className="h-full w-full">
@@ -77,8 +77,8 @@ export default function Body() {
             </div>
 
             {/* Certifications */}
-            <h2 className="section">Certifications</h2>
-            <div className="gap-4 mb-6">
+            <h2 id="certifications-section" className="section">Certifications</h2>
+            <div className="flex flex-wrap gap-4 mb-6">
                 {data?.certifications.map((item, index) => (
                     <Card key={index} className="flex flex-col w-72 h-64">
                         <CardHeader>
@@ -96,7 +96,7 @@ export default function Body() {
             </div>
 
             {/* Projects */}
-            <div className='w-full'>
+            <div id="projects-section" className='w-full'>
                 <h2 className="section">Projects</h2>
                 <div className="flex flex-wrap gap-4">
                     {data?.projects.map((project, index) => (
