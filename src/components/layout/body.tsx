@@ -1,5 +1,5 @@
 import data from '../../app/data.json';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { FaGithub, FaAws } from 'react-icons/fa';
 type data = {
