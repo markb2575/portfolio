@@ -41,7 +41,7 @@ export default function Body() {
                         <CardContent>
                             <CardDescription className='text-base'>{experience.company}</CardDescription>
                             <div className="flex flex-wrap gap-2 mt-5">
-                                {data?.experience.map((item, i) =>
+                                {data?.experience.map((item, _) =>
                                     item.details.map((detail, index) => (
                                         <Badge key={index} variant="secondary">{detail}</Badge>
                                     ))
@@ -65,7 +65,7 @@ export default function Body() {
                             <CardDescription>B.S. {item.major}</CardDescription>
                             <CardDescription>GPA: {item.gpa}</CardDescription>
                             <div className="flex flex-wrap gap-2 mt-5">
-                                {data?.education.map((item, i) =>
+                                {data?.education.map((item, _) =>
                                     item.courses.map((course, index) => (
                                         <Badge key={index} variant="secondary">{course}</Badge>
                                     ))
