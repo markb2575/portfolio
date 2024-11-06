@@ -16,7 +16,7 @@ function useIsVisible(refs: React.RefObject<HTMLElement>[]) {
         }
       });
     }, {
-      threshold: 0.1, // Trigger when 10% of the element is in view
+      threshold: 0, // Trigger when 10% of the element is in view
     });
 
     // Observe each ref in the array

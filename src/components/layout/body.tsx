@@ -17,8 +17,8 @@ export default function Body() {
     const experienceRef = createRef<HTMLDivElement>();
     const educationRef = createRef<HTMLDivElement>();
     const certificationsRef = createRef<HTMLDivElement>();
-    const projectsRef = createRef<HTMLDivElement>();
-    useIsVisible([skillsRef, experienceRef, educationRef, certificationsRef, projectsRef]);
+    const projectRefs = Array.from({ length: data.projects.length }, () => createRef<HTMLDivElement>());
+    useIsVisible([skillsRef, experienceRef, educationRef, certificationsRef, ...projectRefs]);
 
     return (
         <div className="px-10 flex flex-col">
@@ -119,11 +119,11 @@ export default function Body() {
             </div>
 
             {/* Projects */}
-            <div id="projects-section" ref={projectsRef} className='fade-in'>
+            <div id="projects-section">
                 <h2 className="section">Projects</h2>
                 <div className='flex flex-wrap gap-4'>
                     {data?.projects.map((project, index) => (
-                        <Card key={index} className="flex flex-col md:w-72 flex-grow h-72 w-full">
+                        <Card key={index} ref={projectRefs[index]} className="flex flex-col md:w-72 flex-grow h-72 w-full fade-in">
                             <CardHeader>
                                 <CardTitle className="text-lg font-bold">{project.name}</CardTitle>
                                 <CardDescription className="text-base">{project.description}</CardDescription>

@@ -49,7 +49,7 @@ body {
     }
     
     .fade-in {
-        @apply transition-opacity ease-in duration-200
+        @apply transition-opacity ease-in duration-300
     }
 
 
