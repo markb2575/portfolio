@@ -2,11 +2,15 @@
 import * as Switch from "@radix-ui/react-switch";
 import { FaMoon, FaSun, FaGithub, FaLinkedin } from 'react-icons/fa';
 import { Tab } from "@/components/layout";
+import useIsVisible from "@/app/hooks/useIsVisible";
+import { createRef } from "react";
 
 export default function Header({ darkTheme, handleMode }: { darkTheme: boolean, handleMode: () => void }) {
+    const ref = createRef<HTMLDivElement>();
+    useIsVisible([ref]);
 
     return (
-        <div>
+        <div id="header-section" className='fade-in' ref={ref}>
             <div className="header">
                 <div className="border-t flex-grow border-slate-500 mx-10"></div>
                 <h1 className="title mb-5">Mark Bassily</h1>

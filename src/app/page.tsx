@@ -6,10 +6,10 @@ export default function Home() {
     const { darkTheme, isLoading, handleMode } = useDarkTheme();
     if (isLoading) return null;
     return (
-        <div>
+        <div className="font-montserrat">
             <TopArrow />
             <div className="background">
-                <Header darkTheme={darkTheme} handleMode={handleMode} />
+                <Header darkTheme={darkTheme} handleMode={handleMode}  />
                 <Body />
             </div>
         </div>
