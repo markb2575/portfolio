@@ -102,9 +102,7 @@ export default function Body() {
                         <Card key={index} className="h-full w-full">
                             <CardHeader className='justify-between w-full flex flex-row pb-4'>
                                 <CardTitle className="text-lg font-bold">{item.name}</CardTitle>
-                                <CardTitle className='text-sm font-bold'>
-                                    {item.start_date} - {item.end_date}
-                                </CardTitle>
+                                <CardTitle className='text-sm font-bold text-right'>{item.start_date} - {item.end_date}</CardTitle>
                             </CardHeader>
                             <CardContent className="flex-grow">
                                 <CardDescription className="text-base">{item.description}</CardDescription>
