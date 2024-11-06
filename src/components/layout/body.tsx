@@ -28,7 +28,7 @@ export default function Body() {
 
                 <h2 className="section">Skills</h2>
                 <div className='w-full opacity-100' ref={skillsRef}>
-                    <div className="flex flex-wrap gap-2 mb-6">
+                    <div className="flex flex-wrap gap-2 mb-6 cursor-default">
                         {data?.skills['language/framework'].map((skill, index) => (
                             <Badge key={index} variant="secondary">{skill}</Badge>
                         ))}
@@ -46,7 +46,7 @@ export default function Body() {
             {/* Experience */}
             <div id="experience-section" ref={experienceRef} className='fade-in'>
                 <h2 className="section">Experience</h2>
-                <div className="gap-4 mb-6">
+                <div className="gap-4 mb-6 cursor-default">
                     {data?.experience.map((experience, index) => (
                         <Card key={index} className="h-full w-full">
                             <CardHeader className='justify-between w-full flex flex-row pb-4'>
@@ -71,7 +71,7 @@ export default function Body() {
             {/* Education */}
             <div id="education-section" ref={educationRef} className='fade-in'>
                 <h2 className="section">Education</h2>
-                <div className="gap-4 mb-6">
+                <div className="gap-4 mb-6 cursor-default">
                     {data?.education.map((item, index) => (
                         <Card key={index} className="h-full w-full">
                             <CardHeader className='justify-between w-full flex flex-row pb-4'>
@@ -97,7 +97,7 @@ export default function Body() {
             {/* Certifications */}
             <div id="certifications-section" ref={certificationsRef} className='fade-in'>
                 <h2 className="section">Certifications</h2>
-                <div className="gap-4 mb-6">
+                <div className="gap-4 mb-6 cursor-default">
                     {data?.certifications.map((item, index) => (
                         <Card key={index} className="h-full w-full">
                             <CardHeader className='justify-between w-full flex flex-row pb-4'>
@@ -123,7 +123,7 @@ export default function Body() {
                 <h2 className="section">Projects</h2>
                 <div className='flex flex-wrap gap-4'>
                     {data?.projects.map((project, index) => (
-                        <Card key={index} ref={projectRefs[index]} className="flex flex-col md:w-72 flex-grow h-72 w-full fade-in">
+                        <Card key={index} ref={projectRefs[index]} className="flex flex-col md:w-72 flex-grow h-72 w-full fade-in cursor-default">
                             <CardHeader>
                                 <CardTitle className="text-lg font-bold">{project.name}</CardTitle>
                                 <CardDescription className="text-base">{project.description}</CardDescription>
