@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { FaGithub, FaAws } from 'react-icons/fa';
 import useIsVisible from '@/app/hooks/useIsVisible';
-import { createRef, useRef } from 'react';
+import { useRef, createRef } from 'react';
 type data = {
     skills: { "language/framework": string[]; "technology": string[], "additional": string[] };
     experiences: { title: string; company: string; details: string[]; start_date: string; end_date: string; }[];
@@ -17,8 +17,9 @@ export default function Body() {
     const experienceRef = useRef<HTMLDivElement>(null);
     const educationRef = useRef<HTMLDivElement>(null);
     const certificationsRef = useRef<HTMLDivElement>(null);
-    const projectRefs = Array.from({ length: data.projects.length }, () => useRef<HTMLDivElement>(null));
-    useIsVisible([skillsRef, experienceRef, educationRef, certificationsRef, ...projectRefs]);
+    const projectRefs = useRef(data.projects.map(() => createRef<HTMLDivElement>()));
+    // const projectRefs = Array.from({ length: data.projects.length }, () => useRef<HTMLDivElement>(null));
+    useIsVisible([skillsRef, experienceRef, educationRef, certificationsRef, ...projectRefs.current]);
 
     return (
         <div className="px-10 flex flex-col">
@@ -121,7 +122,7 @@ export default function Body() {
                 <h2 className="section">Projects</h2>
                 <div className='flex flex-wrap gap-4'>
                     {data?.projects.map((project, index) => (
-                        <Card key={index} ref={projectRefs[index]} className="flex flex-col md:w-72 flex-grow h-72 w-full fade-in">
+                        <Card key={index} ref={projectRefs.current[index]} className="flex flex-col md:w-72 flex-grow h-72 w-full fade-in">
                             <CardHeader>
                                 <CardTitle className="text-lg font-bold">{project.name}</CardTitle>
                                 <CardDescription className="text-base">{project.description}</CardDescription>
