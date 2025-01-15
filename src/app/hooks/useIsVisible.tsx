@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
+import { RefObject, useEffect } from 'react';
 
-function useIsVisible(refs: React.RefObject<HTMLElement>[]) {
+function useIsVisible(refs: Array<RefObject<HTMLElement | null>>) {
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {

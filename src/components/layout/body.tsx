@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { FaGithub, FaAws } from 'react-icons/fa';
 import useIsVisible from '@/app/hooks/useIsVisible';
-import { createRef } from 'react';
+import { createRef, useRef } from 'react';
 type data = {
     skills: { "language/framework": string[]; "technology": string[], "additional": string[] };
     experiences: { title: string; company: string; details: string[]; start_date: string; end_date: string; }[];
@@ -13,11 +13,11 @@ type data = {
 };
 
 export default function Body() {
-    const skillsRef = createRef<HTMLDivElement>();
-    const experienceRef = createRef<HTMLDivElement>();
-    const educationRef = createRef<HTMLDivElement>();
-    const certificationsRef = createRef<HTMLDivElement>();
-    const projectRefs = Array.from({ length: data.projects.length }, () => createRef<HTMLDivElement>());
+    const skillsRef = useRef<HTMLDivElement>(null);
+    const experienceRef = useRef<HTMLDivElement>(null);
+    const educationRef = useRef<HTMLDivElement>(null);
+    const certificationsRef = useRef<HTMLDivElement>(null);
+    const projectRefs = Array.from({ length: data.projects.length }, () => useRef<HTMLDivElement>(null));
     useIsVisible([skillsRef, experienceRef, educationRef, certificationsRef, ...projectRefs]);
 
     return (
@@ -27,7 +27,7 @@ export default function Body() {
             <div id="skills-section" ref={skillsRef} className='fade-in'>
 
                 <h2 className="section">Skills</h2>
-                <div className='w-full opacity-100' ref={skillsRef}>
+                <div className='w-full opacity-100'>
                     <div className="flex flex-wrap gap-2 mb-6 cursor-default">
                         {data?.skills['language/framework'].map((skill, index) => (
                             <Badge key={index} variant="secondary">{skill}</Badge>
