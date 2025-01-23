@@ -124,7 +124,7 @@
             "name": "daily-blessings",
             "url": "https://github.com/markb2575/daily-blessings",
             "skills": ["Next.js", "TypeScript", "Tailwind", "BetterAuth", "Drizzle ORM", "MySQL"],
-            "description": "Full-stack app for managing classes, students, teachers, and curriculums"
+            "description": "Full-stack app for online daily blessings"
         },
         {
             "name": "remove-osu-images",
