@@ -40,8 +40,8 @@ body {
     }
 
     .gradient-bg {
-        @apply dark:bg-gradient-to-br dark:from-slate-400 dark:to-slate-500 bg-gradient-to-br from-slate-500 to-slate-600 
-        hover:dark:bg-gradient-to-br hover:dark:from-slate-500 hover:dark:to-slate-500 hover:bg-gradient-to-br hover:from-slate-500 hover:to-slate-500
+        @apply dark:bg-gradient-to-br dark:from-slate-200 dark:to-slate-400 bg-gradient-to-br from-slate-500 to-slate-700
+        
     }
 
     .skill-bubble {

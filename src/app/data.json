@@ -40,7 +40,8 @@
             "Training Models",
             "Concurrency",
             "LLM",
-            "Transformer"
+            "Transformer",
+            "Parsing"
         ]
     },
     "experience": [
@@ -118,6 +119,12 @@
             "url": "https://github.com/markb2575/Transformer-Model",
             "skills": ["Python", "Jupyter Notebook"],
             "description": "Implementation of a transformer model"
+        },
+        {
+            "name": "daily-blessings",
+            "url": "https://github.com/markb2575/daily-blessings",
+            "skills": ["Next.js", "TypeScript", "Tailwind", "BetterAuth", "Drizzle ORM", "MySQL"],
+            "description": "Full-stack app for managing classes, students, teachers, and curriculums"
         },
         {
             "name": "remove-osu-images",

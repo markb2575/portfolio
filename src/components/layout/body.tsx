@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge"
 import { FaGithub, FaAws } from 'react-icons/fa';
 import useIsVisible from '@/app/hooks/useIsVisible';
 import { useRef, createRef } from 'react';
+
 type data = {
     skills: { "language/framework": string[]; "technology": string[], "additional": string[] };
     experiences: { title: string; company: string; details: string[]; start_date: string; end_date: string; }[];
@@ -18,7 +19,6 @@ export default function Body() {
     const educationRef = useRef<HTMLDivElement>(null);
     const certificationsRef = useRef<HTMLDivElement>(null);
     const projectRefs = useRef(data.projects.map(() => createRef<HTMLDivElement>()));
-    // const projectRefs = Array.from({ length: data.projects.length }, () => useRef<HTMLDivElement>(null));
     useIsVisible([skillsRef, experienceRef, educationRef, certificationsRef, ...projectRefs.current]);
 
     return (
