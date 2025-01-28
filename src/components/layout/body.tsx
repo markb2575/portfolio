@@ -49,7 +49,7 @@ export default function Body() {
                 <h2 className="section">Experience</h2>
                 <div className="gap-4 mb-6">
                     {data?.experience.map((experience, index) => (
-                        <Card key={index} className="h-full w-full relative bg-opacity-60">
+                        <Card key={index} className="h-full w-full relative bg-opacity-60 dark:bg-opacity-60">
                             <CardHeader className='justify-between w-full flex flex-row pb-4'>
                                 <CardTitle className="text-lg font-bold">{experience.title}</CardTitle>
                                 <CardTitle className='text-sm font-bold text-right'>{experience.start_date} - {experience.end_date}</CardTitle>
@@ -74,7 +74,7 @@ export default function Body() {
                 <h2 className="section">Education</h2>
                 <div className="gap-4 mb-6">
                     {data?.education.map((item, index) => (
-                        <Card key={index} className="h-full w-full bg-opacity-60">
+                        <Card key={index} className="h-full w-full bg-opacity-60 dark:bg-opacity-60">
                             <CardHeader className='justify-between w-full flex flex-row pb-4'>
                                 <CardTitle className="text-lg font-bold">{item.school}</CardTitle>
                                 <CardTitle className='text-sm font-bold text-right'>{item.start_date} - {item.end_date}</CardTitle>
@@ -100,7 +100,7 @@ export default function Body() {
                 <h2 className="section">Certifications</h2>
                 <div className="gap-4 mb-6">
                     {data?.certifications.map((item, index) => (
-                        <Card key={index} className="h-full w-full bg-opacity-60">
+                        <Card key={index} className="h-full w-full bg-opacity-60 dark:bg-opacity-60">
                             <CardHeader className='justify-between w-full flex flex-row pb-4'>
                                 <CardTitle className="text-lg font-bold">{item.name}</CardTitle>
                                 <CardTitle className='text-sm font-bold text-right'>{item.start_date} - {item.end_date}</CardTitle>
@@ -122,7 +122,7 @@ export default function Body() {
                 <h2 className="section">Projects</h2>
                 <div className='flex flex-wrap gap-4'>
                     {data?.projects.map((project, index) => (
-                        <Card key={index} ref={projectRefs.current[index]} className="flex flex-col md:w-72 flex-grow h-72 w-full fade-in bg-opacity-60">
+                        <Card key={index} ref={projectRefs.current[index]} className="flex flex-col md:w-72 flex-grow h-72 w-full fade-in bg-opacity-60 dark:bg-opacity-60">
                             <CardHeader>
                                 <CardTitle className="text-lg font-bold">{project.name}</CardTitle>
                                 <CardDescription className="text-base">{project.description}</CardDescription>
