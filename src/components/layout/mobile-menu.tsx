@@ -35,8 +35,8 @@ export default function MobileMenu({ setMenuOpened }: MobileMenuProps) {
     };
     return (
         <>
-            <div className="z-30 backdrop-blur-md w-screen h-screen fixed left-0 top-0 m-0 p-0 flex flex-col items-center justify-center" onClick={() => setMenuOpened(false)}>
-                <div className="z-30 flex flex-col gap-3 w-1/2 mb-3 ">
+            <div className="z-40 backdrop-blur-md w-screen h-screen fixed left-0 top-0 m-0 p-0 flex flex-col items-center justify-center" onClick={() => setMenuOpened(false)}>
+                <div className=" flex flex-col gap-3 w-1/2 mb-3 ">
                     <div onClick={() => handleTabChange(0)} className="hover:text-neutral-500 cursor-pointer backdrop-blur-sm bg-opacity-60 dark:bg-opacity-60 text-base text-center border border-neutral-200 bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-900 rounded-lg p-3 ">Skills</div>
                     <div onClick={() => handleTabChange(1)} className="hover:text-neutral-500 cursor-pointer backdrop-blur-sm bg-opacity-60 dark:bg-opacity-60 text-base text-center border border-neutral-200 bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-900 rounded-lg p-3 ">Experience</div>
                     <div onClick={() => handleTabChange(2)} className="hover:text-neutral-500 cursor-pointer backdrop-blur-sm bg-opacity-60 dark:bg-opacity-60 text-base text-center border border-neutral-200 bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-900 rounded-lg p-3 ">Education</div>

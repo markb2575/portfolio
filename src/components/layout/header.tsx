@@ -21,11 +21,11 @@ export default function Header() {
             </div>
             <div className="md:hidden px-10 flex flex-col justify-self-center">
                 {menuOpened ? (
-                    <div onClick={() => setMenuOpened(false)} className="cursor-pointer z-40 fixed top-6 right-0 -translate-x-1/2 backdrop-blur-sm bg-opacity-60 dark:bg-opacity-60 border border-neutral-200 bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-900 rounded-lg p-3 ">
+                    <div onClick={() => setMenuOpened(false)} className="cursor-pointer z-50 fixed top-6 right-0 -translate-x-1/2 backdrop-blur-sm bg-opacity-60 dark:bg-opacity-60 border border-neutral-200 bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-900 rounded-lg p-3 ">
                         <X className=" hover:text-neutral-500 transition-colors" />
                     </div>
                 ) : (
-                    <div  onClick={() => setMenuOpened(true)} className="cursor-pointer z-40 fixed top-6 right-0 -translate-x-1/2 backdrop-blur-sm bg-opacity-60 dark:bg-opacity-60 border border-neutral-200 bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-900 rounded-lg p-3">
+                    <div onClick={() => setMenuOpened(true)} className="cursor-pointer z-50 fixed top-6 right-0 -translate-x-1/2 backdrop-blur-sm bg-opacity-60 dark:bg-opacity-60 border border-neutral-200 bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-900 rounded-lg p-3">
                         <Menu className="hover:text-neutral-500 transition-colors" />
                     </div>
                 )}
@@ -34,7 +34,7 @@ export default function Header() {
 
                 {menuOpened && <MobileMenu setMenuOpened={setMenuOpened} />}
             </div>
-            <div className={cn("px-10 w-full lg:w-2/3 fixed left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center transition-opacity duration-200", isTop ? "opacity-100 z-30" : "opacity-0 -z-30")}>
+            <div className={cn("px-10 w-full lg:w-2/3 fixed left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center transition-opacity duration-200", isTop ? "opacity-100 z-20" : "opacity-0 -z-20")}>
                 <div className="flex justify-center mb-20 text-neutral-600 dark:text-neutral-300 font-normal text-4xl">
                     {"hi, my name is".split("").map((char, index) => (
                         <div
@@ -57,7 +57,7 @@ export default function Header() {
                         </div>
                     ))}
                 </div>
-                <div className="flex gap-6 justify-center relative z-50">
+                <div className="flex gap-6 justify-center relative z-20">
                     <FaGithub
                         className="dark:text-neutral-300 text-neutral-600 size-7 drop-shadow-md hover:text-neutral-500 cursor-pointer animate-pulse hover:animate-none hover:opacity-80"
                         style={{ animationDelay: "0s" }}
