@@ -5,9 +5,8 @@ export default function useIsTop() {
 
     useEffect(() => {
         const handleScroll = () => {
-            setIsTop(window.scrollY === 0);
+            setIsTop(window.scrollY < 50);
         };
-
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
