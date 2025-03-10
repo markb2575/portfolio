@@ -9,6 +9,15 @@ const config: Config = {
     ],
     theme: {
         extend: {
+            animation: {
+                oscillate: "oscillate 3s infinite ease-in-out",
+            },
+            keyframes: {
+                oscillate: {
+                  "0%, 100%": { transform: "translateY(0px)" },
+                  "50%": { transform: "translateY(10px)" },
+                },
+            },
             colors: {
                 background: 'var(--background)',
                 foreground: 'var(--foreground)'

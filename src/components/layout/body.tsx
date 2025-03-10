@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge"
 import { FaGithub, FaAws } from 'react-icons/fa';
 import useIsVisible from '@/app/hooks/useIsVisible';
 import { useRef, createRef } from 'react';
+import useIsTop from '@/app/hooks/useIsTop';
+import { cn } from '@/lib/utils';
+import { ArrowUp } from 'lucide-react';
 
 type data = {
     skills: { "language/framework": string[]; "technology": string[], "additional": string[] };
@@ -20,10 +23,16 @@ export default function Body() {
     const certificationsRef = useRef<HTMLDivElement>(null);
     const projectRefs = useRef(data.projects.map(() => createRef<HTMLDivElement>()));
     useIsVisible([skillsRef, experienceRef, educationRef, certificationsRef, ...projectRefs.current]);
-
+    const isTop = useIsTop()
     return (
-        <div className="px-10 flex flex-col">
-
+        <div className={cn("px-10 w-full lg:w-2/3 justify-self-center mt-32 transition-opacity duration-200 relative -z-10", isTop ? "opacity-0 ":"opacity-100")}>
+            <div className="flex flex-col items-center gap-2">
+                <div className="flex gap-5 dark:text-neutral-300 text-neutral-700">
+                    <ArrowUp className="animate-bounce"  />
+                    <ArrowUp className="animate-bounce delay-150" />
+                    <ArrowUp className="animate-bounce delay-300" />
+                </div>
+            </div>
             {/* Skills */}
             <div id="skills-section" ref={skillsRef} className='fade-in'>
 
@@ -49,7 +58,7 @@ export default function Body() {
                 <h2 className="section">Experience</h2>
                 <div className="gap-4 mb-6">
                     {data?.experience.map((experience, index) => (
-                        <Card key={index} className="h-full w-full relative bg-opacity-60 dark:bg-opacity-60">
+                        <Card key={index} className="h-full w-full relative bg-opacity-60 dark:bg-opacity-60 backdrop-blur-sm">
                             <CardHeader className='justify-between w-full flex flex-row pb-4'>
                                 <CardTitle className="text-lg font-bold">{experience.title}</CardTitle>
                                 <CardTitle className='text-sm font-bold text-right'>{experience.start_date} - {experience.end_date}</CardTitle>
@@ -74,7 +83,7 @@ export default function Body() {
                 <h2 className="section">Education</h2>
                 <div className="gap-4 mb-6">
                     {data?.education.map((item, index) => (
-                        <Card key={index} className="h-full w-full bg-opacity-60 dark:bg-opacity-60">
+                        <Card key={index} className="h-full w-full bg-opacity-60 dark:bg-opacity-60 backdrop-blur-sm">
                             <CardHeader className='justify-between w-full flex flex-row pb-4'>
                                 <CardTitle className="text-lg font-bold">{item.school}</CardTitle>
                                 <CardTitle className='text-sm font-bold text-right'>{item.start_date} - {item.end_date}</CardTitle>
@@ -100,7 +109,7 @@ export default function Body() {
                 <h2 className="section">Certifications</h2>
                 <div className="gap-4 mb-6">
                     {data?.certifications.map((item, index) => (
-                        <Card key={index} className="h-full w-full bg-opacity-60 dark:bg-opacity-60">
+                        <Card key={index} className="h-full w-full bg-opacity-60 dark:bg-opacity-60 backdrop-blur-sm">
                             <CardHeader className='justify-between w-full flex flex-row pb-4'>
                                 <CardTitle className="text-lg font-bold">{item.name}</CardTitle>
                                 <CardTitle className='text-sm font-bold text-right'>{item.start_date} - {item.end_date}</CardTitle>
@@ -109,7 +118,7 @@ export default function Body() {
                                 <CardDescription className="text-base">{item.description}</CardDescription>
                             </CardContent>
                             <FaAws
-                                className='mb-5 ml-5 dark:text-slate-300 text-slate-600 size-8 drop-shadow-md hover:text-slate-500 hover:dark:text-slate-500 cursor-pointer'
+                                className='mb-5 ml-5 dark:text-neutral-300 text-neutral-600 size-8 drop-shadow-md hover:text-neutral-500 cursor-pointer'
                                 onClick={() => window.location.href = item.url}
                             />
                         </Card>
@@ -122,7 +131,7 @@ export default function Body() {
                 <h2 className="section">Projects</h2>
                 <div className='flex flex-wrap gap-4'>
                     {data?.projects.map((project, index) => (
-                        <Card key={index} ref={projectRefs.current[index]} className="flex flex-col md:w-72 flex-grow h-72 w-full fade-in bg-opacity-60 dark:bg-opacity-60">
+                        <Card key={index} ref={projectRefs.current[index]} className="flex flex-col md:w-72 flex-grow h-72 w-full fade-in bg-opacity-60 dark:bg-opacity-60 backdrop-blur-sm">
                             <CardHeader>
                                 <CardTitle className="text-lg font-bold">{project.name}</CardTitle>
                                 <CardDescription className="text-base">{project.description}</CardDescription>
@@ -134,7 +143,7 @@ export default function Body() {
                                     ))}
                                 </div>
                             </CardContent>
-                            <FaGithub className="mb-5 ml-5 dark:text-slate-300 text-slate-600 size-8 drop-shadow-md hover:text-slate-500 hover:dark:text-slate-500 cursor-pointer" onClick={() => window.location.href = project.url} />
+                            <FaGithub className="mb-5 ml-5 dark:text-neutral-300 text-neutral-600 size-8 drop-shadow-md hover:text-neutral-500 cursor-pointer" onClick={() => window.location.href = project.url} />
                         </Card>
                     ))}
                 </div>

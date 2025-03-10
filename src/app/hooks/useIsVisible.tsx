@@ -7,7 +7,6 @@ function useIsVisible(refs: Array<RefObject<HTMLElement | null>>) {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            console.log("Element is in viewport", entry.target.id);
             // Add the 'opacity-100' class and remove 'opacity-0' when in view
             entry.target.classList.add("opacity-100");
             entry.target.classList.remove("opacity-0");
