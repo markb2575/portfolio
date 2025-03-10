@@ -1,9 +1,13 @@
 "use client";
 import { useTheme } from "next-themes"
-import { useEffect } from "react";
+import { Dispatch, SetStateAction, useEffect } from "react";
 import { Moon, Sun } from "lucide-react";
 
-export default function MobileMenu({ setMenuOpened }: any) {
+interface MobileMenuProps {
+    setMenuOpened: Dispatch<SetStateAction<boolean>>;
+}
+
+export default function MobileMenu({ setMenuOpened }: MobileMenuProps) {
     const { setTheme, theme } = useTheme()
     useEffect(() => {
         // Disable scrolling when the menu is open
@@ -41,7 +45,7 @@ export default function MobileMenu({ setMenuOpened }: any) {
                     <div onClick={() => (window.location.href = "/Resume.pdf")} className="hover:text-neutral-500 cursor-pointer backdrop-blur-sm bg-opacity-60 dark:bg-opacity-60 text-base text-center border border-neutral-200 bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-900 rounded-lg p-3 ">Resume</div>
 
                 </div>
-                <div className="backdrop-blur-sm bg-opacity-60 dark:bg-opacity-60 border border-neutral-200 bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-900 rounded-lg p-3 cursor-pointer" onClick={() => { theme === "light" ? setTheme("dark") : setTheme("light") }}>
+                <div className="backdrop-blur-sm bg-opacity-60 dark:bg-opacity-60 border border-neutral-200 bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-900 rounded-lg p-3 cursor-pointer" onClick={() => {if (theme === "light") {setTheme("dark")} else {setTheme("light")}}}>
                     {theme === "light" ? (
                         <Sun className="theme-toggle-icon hover:text-neutral-500" />
                     ) : (
