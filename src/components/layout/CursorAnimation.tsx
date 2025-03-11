@@ -67,7 +67,7 @@ export default function CursorAnimation() {
     return (
         <div className="fixed inset-0 pointer-events-none flex flex-row justify-evenly">
             {dots.current.map((row: RefObject<unknown>[], rowIndex: number) => (
-                <div key={rowIndex} className="flex flex-col justify-evenly">
+                <div key={rowIndex} className="flex flex-col justify-evenly animate-pulse duration-1000" style={{animationDelay: `${rowIndex * 0.05}s`}}>
                     {row.map((dot: RefObject<unknown>, colIndex: number) => {
                         const dotY = colIndex * dotDistance;
                         const dotX = rowIndex * dotDistance;
@@ -79,9 +79,7 @@ export default function CursorAnimation() {
                                 className="flex p-2 flex-grow-0 relative"
                             >
                                 <div
-                                    className={`bg-gray-500 rounded-full opacity-50 transition-all duration-200 absolute inset-0 m-auto ${
-                                        near ? "size-1" : "size-px"
-                                    } `}
+                                    className={`dark:bg-neutral-500 bg-neutral-800 rounded-full transition-all duration-200 absolute inset-0 m-auto ${near ? "size-1" : "size-0.5"} `}
                                 />
                             </div>
                         );
