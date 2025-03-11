@@ -35,42 +35,39 @@ export default function Header() {
                 {menuOpened && <MobileMenu setMenuOpened={setMenuOpened} />}
             </div>
             <div className={cn("px-10 w-full lg:w-2/3 fixed left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center transition-opacity duration-200", isTop ? "opacity-100 z-20" : "opacity-0 -z-20")}>
-                <div className="flex justify-center mb-20 text-neutral-600 dark:text-neutral-300 font-normal text-4xl">
+                <div className="flex justify-center mb-10 text-neutral-600 dark:text-neutral-300 font-normal text-4xl">
                     {"hi, my name is".split("").map((char, index) => (
                         <div
                             key={index}
                             style={{ animationDelay: `${index * 0.1}s` }}
-                            className=" animate-pulse"
+                            className="animate-pulse"
                         >
                             {char === " " ? <div className="m-2" /> : char}
                         </div>
                     ))}
                 </div>
-                <div className="flex justify-center mb-28 gap-1 font-light text-5xl text-neutral-600 dark:text-neutral-300">
+                <div className="flex justify-center mb-16 gap-1 font-light text-5xl text-neutral-600 dark:text-neutral-300">
                     {"Mark Bassily".split("").map((char, index) => (
                         <div
                             key={index}
                             style={{ animationDelay: `${index * 0.2}s` }}
-                            className="  animate-oscillate"
+                            className="animate-oscillate"
                         >
                             {char === " " ? <div className="m-2" /> : char}
                         </div>
                     ))}
                 </div>
-                <div className="flex gap-6 justify-center relative z-20">
+                <div className="flex gap-6 justify-center relative z-20 mb-20">
                     <FaGithub
-                        className="dark:text-neutral-300 text-neutral-600 size-7 drop-shadow-md hover:text-neutral-500 cursor-pointer animate-pulse hover:animate-none hover:opacity-80"
-                        style={{ animationDelay: "0s" }}
+                        className="dark:text-neutral-300 text-neutral-600 size-7 drop-shadow-md  cursor-pointer hover:opacity-50"
                         onClick={() => (window.location.href = "https://github.com/markb2575")}
                     />
                     <FaLinkedin
-                        className="dark:text-neutral-300 text-neutral-600 size-7 drop-shadow-md hover:text-neutral-500 cursor-pointer animate-pulse hover:animate-none hover:opacity-80"
-                        style={{ animationDelay: "0.2s" }}
+                        className="dark:text-neutral-300 text-neutral-600 size-7 drop-shadow-md cursor-pointer hover:opacity-50"
                         onClick={() => (window.location.href = "https://linkedin.com/in/markb2575")}
                     />
                     <FaEnvelope
-                        className="dark:text-neutral-300 text-neutral-600 size-7 drop-shadow-md hover:text-neutral-500 cursor-pointer animate-pulse hover:animate-none hover:opacity-80"
-                        style={{ animationDelay: "0.4s" }}
+                        className="dark:text-neutral-300 text-neutral-600 size-7 drop-shadow-md cursor-pointer hover:opacity-50"
                         onClick={() => (window.location.href = "mailto:markbassily2575@gmail.com")}
                     />
                 </div>

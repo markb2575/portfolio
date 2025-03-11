@@ -118,7 +118,7 @@ export default function Body() {
                                 <CardDescription className="text-base">{item.description}</CardDescription>
                             </CardContent>
                             <FaAws
-                                className='mb-5 ml-5 dark:text-neutral-300 text-neutral-600 size-8 drop-shadow-md hover:text-neutral-500 cursor-pointer'
+                                className='mb-5 ml-5 dark:text-neutral-300 text-neutral-600 size-8 drop-shadow-md hover:opacity-50 cursor-pointer'
                                 onClick={() => window.location.href = item.url}
                             />
                         </Card>
@@ -143,7 +143,7 @@ export default function Body() {
                                     ))}
                                 </div>
                             </CardContent>
-                            <FaGithub className="mb-5 ml-5 dark:text-neutral-300 text-neutral-600 size-8 drop-shadow-md hover:text-neutral-500 cursor-pointer" onClick={() => window.location.href = project.url} />
+                            <FaGithub className="mb-5 ml-5 dark:text-neutral-300 text-neutral-600 size-8 drop-shadow-md hover:opacity-50  cursor-pointer" onClick={() => window.location.href = project.url} />
                         </Card>
                     ))}
                 </div>
