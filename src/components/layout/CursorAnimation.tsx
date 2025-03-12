@@ -79,7 +79,7 @@ export default function CursorAnimation() {
                                 className="flex p-2 flex-grow-0 relative"
                             >
                                 <div
-                                    className={`dark:bg-neutral-500 bg-neutral-800 rounded-full transition-all duration-200 absolute inset-0 m-auto ${near ? "size-1" : "size-0.5"} `}
+                                    className={`dark:bg-neutral-500 bg-neutral-800 rounded-full transition-all duration-200 absolute inset-0 m-auto ${near ? "size-1.5" : "size-0.5"} `}
                                 />
                             </div>
                         );

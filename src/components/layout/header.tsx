@@ -21,11 +21,11 @@ export default function Header() {
             </div>
             <div className="md:hidden px-10 flex flex-col justify-self-center">
                 {menuOpened ? (
-                    <div onClick={() => setMenuOpened(false)} className="cursor-pointer z-50 fixed top-6 right-0 -translate-x-1/2 backdrop-blur-sm bg-opacity-60 dark:bg-opacity-60 border border-neutral-200 bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-900 rounded-lg p-3 ">
+                    <div onClick={() => setMenuOpened(false)} className="cursor-pointer z-50 fixed top-6 right-2 backdrop-blur-sm bg-opacity-60 dark:bg-opacity-60 border border-neutral-200 bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-900 rounded-lg p-3 ">
                         <X className=" hover:text-neutral-500 transition-colors" />
                     </div>
                 ) : (
-                    <div onClick={() => setMenuOpened(true)} className="cursor-pointer z-50 fixed top-6 right-0 -translate-x-1/2 backdrop-blur-sm bg-opacity-60 dark:bg-opacity-60 border border-neutral-200 bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-900 rounded-lg p-3">
+                    <div onClick={() => setMenuOpened(true)} className="cursor-pointer z-50 fixed top-6 right-2 backdrop-blur-sm bg-opacity-60 dark:bg-opacity-60 border border-neutral-200 bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-900 rounded-lg p-3">
                         <Menu className="hover:text-neutral-500 transition-colors" />
                     </div>
                 )}
