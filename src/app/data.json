@@ -31,7 +31,8 @@
             "Express",
             "Jenkins",
             "Jira",
-            "Postman"
+            "Postman",
+            "Hugging Face"
         ],
         "additional": [
             "Machine Learning",
@@ -113,6 +114,12 @@
             "url": "https://github.com/markb2575/resume",
             "skills": ["Next.js","Tailwind"],
             "description": "Personal portfolio website"
+        },
+        {
+            "name": "RAG-Model",
+            "url": "https://github.com/markb2575/RAG-Model",
+            "skills": ["Hugging Face","Sentence Transformer","Marker","NumPy","Python"],
+            "description": "A RAG model that retrieves data from PDFs"
         },
         {
             "name": "Transformer-Model",
