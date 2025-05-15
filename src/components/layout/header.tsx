@@ -10,6 +10,7 @@ import { ArrowDown, Menu, X } from "lucide-react";
 import MobileMenu from "./mobile-menu";
 import useIsTop from "@/app/hooks/useIsTop";
 import { cn } from "@/lib/utils";
+import Clicker from "./clicker";
 
 export default function Header() {
     const [menuOpened, setMenuOpened] = useState(false)
@@ -71,7 +72,9 @@ export default function Header() {
                         onClick={() => (window.location.href = "mailto:markbassily2575@gmail.com")}
                     />
                 </div>
+                <Clicker />
             </div>
+            
             <div className={cn("fixed bottom-20 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2", isTop ? "opacity-100" : "opacity-0")}>
                 <div className="flex gap-5 dark:text-neutral-300 text-neutral-700">
                     <ArrowDown className="animate-bounce" />
