@@ -41,30 +41,30 @@ export default function ClickerGame() {
 
   // Batch update clicks to backend every 10 seconds & flush on unload
   useEffect(() => {
-    const interval = setInterval(() => {
-      if (localClickCount.current > 0) {
-        const count = localClickCount.current;
-        localClickCount.current = 0;
-        fetch(
-          "https://m6rdbdiv01.execute-api.us-east-1.amazonaws.com/prod/clicker/update",
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ increment: count }),
-          }
-        )
-          .then((res) => res.json())
-          .then((data) => {
-            const parsed = JSON.parse(data.body);
-            if (typeof parsed.new_total === "number") {
-              setClicks(parsed.new_total);
-            } else {
-              console.warn("Unexpected data format:", parsed);
-            }
-          })
-          .catch(console.error);
-      }
-    }, 10000);
+    // const interval = setInterval(() => {
+    //   if (localClickCount.current > 0) {
+    //     const count = localClickCount.current;
+    //     localClickCount.current = 0;
+    //     fetch(
+    //       "https://m6rdbdiv01.execute-api.us-east-1.amazonaws.com/prod/clicker/update",
+    //       {
+    //         method: "POST",
+    //         headers: { "Content-Type": "application/json" },
+    //         body: JSON.stringify({ increment: count }),
+    //       }
+    //     )
+    //       .then((res) => res.json())
+    //       .then((data) => {
+    //         const parsed = JSON.parse(data.body);
+    //         if (typeof parsed.new_total === "number") {
+    //           setClicks(parsed.new_total);
+    //         } else {
+    //           console.warn("Unexpected data format:", parsed);
+    //         }
+    //       })
+    //       .catch(console.error);
+    //   }
+    // }, 10000);
 
     const flushOnUnload = () => {
       if (localClickCount.current > 0) {
@@ -85,7 +85,6 @@ export default function ClickerGame() {
     window.addEventListener("beforeunload", flushOnUnload);
 
     return () => {
-      clearInterval(interval);
       window.removeEventListener("beforeunload", flushOnUnload);
     };
   }, []);
