@@ -13,6 +13,21 @@ import { cn } from "@/lib/utils";
 import Clicker from "./clicker";
 
 export default function Header() {
+    const handleTabChange = (value: number) => {
+        const sectionIds = [
+            'skills-section',
+            'experience-section',
+            'education-section',
+            'certifications-section',
+            'projects-section',
+        ];
+
+        const section = document.getElementById(sectionIds[value]);
+
+        if (section) {
+            window.scrollTo({behavior: 'smooth', top: section.offsetTop + 50 })
+        }
+    };
     const [menuOpened, setMenuOpened] = useState(false)
     const isTop = useIsTop()
     return (
@@ -75,7 +90,7 @@ export default function Header() {
                 <Clicker />
             </div>
             
-            <div className={cn("fixed bottom-20 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2", isTop ? "opacity-100" : "opacity-0")}>
+            <div className={cn("fixed bottom-20 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2", isTop ? "opacity-100" : "opacity-0")} onClick={() => handleTabChange(0)}>
                 <div className="flex gap-5 dark:text-neutral-300 text-neutral-700">
                     <ArrowDown className="animate-bounce" />
                     <ArrowDown className="animate-bounce delay-150" />

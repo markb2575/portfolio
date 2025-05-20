@@ -24,9 +24,10 @@ export default function Body() {
     const projectRefs = useRef(data.projects.map(() => createRef<HTMLDivElement>()));
     useIsVisible([skillsRef, experienceRef, educationRef, certificationsRef, ...projectRefs.current]);
     const isTop = useIsTop()
+
     return (
         <div className={cn("px-10 w-full lg:w-2/3 justify-self-center mt-32 transition-opacity duration-200 relative -z-10", isTop ? "opacity-0 ":"opacity-100")}>
-            <div className="flex flex-col items-center gap-2">
+            <div className="flex flex-col items-center gap-2" onClick={() => window.scrollTo({behavior: 'smooth', top: 0 })}>
                 <div className="flex gap-5 dark:text-neutral-300 text-neutral-700">
                     <ArrowUp className="animate-bounce"  />
                     <ArrowUp className="animate-bounce delay-150" />

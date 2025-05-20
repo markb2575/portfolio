@@ -39,53 +39,27 @@ export default function ClickerGame() {
     };
   }, []);
 
-  // Batch update clicks to backend every 10 seconds & flush on unload
   useEffect(() => {
-    // const interval = setInterval(() => {
-    //   if (localClickCount.current > 0) {
-    //     const count = localClickCount.current;
-    //     localClickCount.current = 0;
-    //     fetch(
-    //       "https://m6rdbdiv01.execute-api.us-east-1.amazonaws.com/prod/clicker/update",
-    //       {
-    //         method: "POST",
-    //         headers: { "Content-Type": "application/json" },
-    //         body: JSON.stringify({ increment: count }),
-    //       }
-    //     )
-    //       .then((res) => res.json())
-    //       .then((data) => {
-    //         const parsed = JSON.parse(data.body);
-    //         if (typeof parsed.new_total === "number") {
-    //           setClicks(parsed.new_total);
-    //         } else {
-    //           console.warn("Unexpected data format:", parsed);
-    //         }
-    //       })
-    //       .catch(console.error);
-    //   }
-    // }, 10000);
-
-    const flushOnUnload = () => {
+    const flushClicks = () => {
       if (localClickCount.current > 0) {
-        const payload = JSON.stringify({
-          increment: localClickCount.current,
-        });
         fetch(
           "https://m6rdbdiv01.execute-api.us-east-1.amazonaws.com/prod/clicker/update",
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: payload,
+            body: JSON.stringify({ increment: localClickCount.current }),
             keepalive: true,
           }
         );
       }
     };
-    window.addEventListener("beforeunload", flushOnUnload);
+
+    document.addEventListener("visibilitychange", () => {
+      if (document.visibilityState === 'hidden') flushClicks();
+    });
 
     return () => {
-      window.removeEventListener("beforeunload", flushOnUnload);
+      document.removeEventListener("visibilitychange", flushClicks);
     };
   }, []);
 
