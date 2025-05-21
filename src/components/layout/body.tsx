@@ -82,7 +82,7 @@ export default function Body() {
                 className="flex flex-col items-center gap-2"
                 onClick={() => window.scrollTo({ behavior: "smooth", top: 0 })}
             >
-                <div className="flex gap-5 dark:text-neutral-300 text-neutral-700">
+                <div className="flex gap-5 dark:text-neutral-300 text-neutral-700 hover:opacity-50 cursor-pointer">
                     <ArrowUp className="animate-bounce" />
                     <ArrowUp className="animate-bounce delay-150" />
                     <ArrowUp className="animate-bounce delay-300" />

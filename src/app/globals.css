@@ -40,7 +40,7 @@ body {
   
 @layer components {
     .background {
-        @apply dark:bg-neutral-950 bg-neutral-200 transition-colors min-h-screen py-10 px-[5%] overflow-y-auto no-scrollbar selection:text-blue-500;
+        @apply dark:bg-neutral-950 bg-neutral-200 min-h-screen py-10 px-[5%] overflow-y-auto no-scrollbar selection:text-blue-500;
     }
 
     .header {

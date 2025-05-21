@@ -90,7 +90,7 @@ export default function Header() {
             </div>
             
             <div className={cn("fixed bottom-20 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2", isTop ? "opacity-100" : "opacity-0")} onClick={() => handleTabChange(0)}>
-                <div className="flex gap-5 dark:text-neutral-300 text-neutral-700">
+                <div className="flex gap-5 dark:text-neutral-300 text-neutral-700 hover:opacity-50 cursor-pointer">
                     <ArrowDown className="animate-bounce" />
                     <ArrowDown className="animate-bounce delay-150" />
                     <ArrowDown className="animate-bounce delay-300" />
