@@ -1,13 +1,11 @@
-"use client";
-
 import { useEffect, useRef, useState } from "react";
 
-export default function ClickerGame() {
+export function useStats() {
   const [clicks, setClicks] = useState(0);
-  const [loading, setLoading] = useState(true);
+  const [visits, setVisits] = useState(0);
   const localClickCount = useRef(0);
 
-  // Fetch total clicks on mount
+  // Fetch stats on mount
   useEffect(() => {
     fetch(
       "https://m6rdbdiv01.execute-api.us-east-1.amazonaws.com/prod/clicker/fetch"
@@ -15,17 +13,13 @@ export default function ClickerGame() {
       .then((res) => res.json())
       .then((data) => {
         const parsed = JSON.parse(data.body);
-        if (typeof parsed.count === "number") {
-          setClicks(parsed.count);
-        } else {
-          console.warn("Unexpected data format:", parsed);
-        }
+        setClicks(Number(parsed.click_count));
+        setVisits(Number(parsed.visits));
       })
       .catch(console.error)
-      .finally(() => setLoading(false));
   }, []);
 
-  // Handle all clicks on window
+  // Count local clicks
   useEffect(() => {
     const handleClick = () => {
       localClickCount.current += 1;
@@ -33,12 +27,12 @@ export default function ClickerGame() {
     };
 
     window.addEventListener("click", handleClick);
-
     return () => {
       window.removeEventListener("click", handleClick);
     };
   }, []);
 
+  // Send local click counts on page hide
   useEffect(() => {
     const flushClicks = () => {
       if (localClickCount.current > 0) {
@@ -54,22 +48,15 @@ export default function ClickerGame() {
       }
     };
 
-    document.addEventListener("visibilitychange", () => {
-      if (document.visibilityState === 'hidden') flushClicks();
-    });
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === "hidden") flushClicks();
+    };
 
+    document.addEventListener("visibilitychange", handleVisibilityChange);
     return () => {
-      document.removeEventListener("visibilitychange", flushClicks);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
   }, []);
 
-  if (loading) return null;
-
-  return (
-    <div className="text-center mt-10 select-none">
-      <p className="mt-8 text-lg">
-        Total Clicks from All Visitors: {clicks}
-      </p>
-    </div>
-  );
+  return { clicks, visits };
 }

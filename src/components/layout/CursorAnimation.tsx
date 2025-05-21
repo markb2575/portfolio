@@ -15,6 +15,7 @@ export default function CursorAnimation() {
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
     const lastMouseMoveTime = useRef<number>(Date.now());
     const animationFrameId = useRef<number | null>(null);
+    const [isVisible, setIsVisible] = useState(false);
 
     const handleResize = () => {
         const x_dots = Math.floor(window.innerWidth) / dotDistance;
@@ -28,10 +29,10 @@ export default function CursorAnimation() {
         setMousePosition({ x: event.clientX, y: event.clientY });
         lastMouseMoveTime.current = Date.now();
     };
+
     const animateMousePosition = useCallback(() => {
         const timeSinceLastMove = Date.now() - lastMouseMoveTime.current;
         if (timeSinceLastMove > 1000) {
-            // 1 seconds
             setMousePosition((prevPosition) => ({
                 x: (prevPosition.x + 5) % window.innerWidth,
                 y: (prevPosition.y + 5) % window.innerHeight,
@@ -47,12 +48,18 @@ export default function CursorAnimation() {
 
         animationFrameId.current = requestAnimationFrame(animateMousePosition);
 
+        // Start fade in after a short delay
+        const timer = setTimeout(() => {
+            setIsVisible(true);
+        }, 500);
+
         return () => {
             window.removeEventListener("resize", handleResize);
             window.removeEventListener("mousemove", handleMouseMove);
             if (animationFrameId.current) {
                 cancelAnimationFrame(animationFrameId.current);
             }
+            clearTimeout(timer);
         };
     }, [animateMousePosition]);
 
@@ -61,11 +68,11 @@ export default function CursorAnimation() {
             Math.pow(dotX - mousePosition.x, 2) +
                 Math.pow(dotY - mousePosition.y, 2)
         );
-        return distance < 125; // Adjust this value to change the sensitivity
+        return distance < 125;
     };
 
     return (
-        <div className="fixed inset-0 pointer-events-none flex flex-row justify-evenly">
+        <div className={`fixed inset-0 pointer-events-none flex flex-row justify-evenly transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
             {dots.current.map((row: RefObject<unknown>[], rowIndex: number) => (
                 <div key={rowIndex} className="flex flex-col justify-evenly animate-pulse duration-1000" style={{animationDelay: `${rowIndex * 0.05}s`}}>
                     {row.map((dot: RefObject<unknown>, colIndex: number) => {
@@ -79,7 +86,7 @@ export default function CursorAnimation() {
                                 className="flex p-2 flex-grow-0 relative"
                             >
                                 <div
-                                    className={`dark:bg-neutral-500 bg-neutral-800 rounded-full transition-all duration-200 absolute inset-0 m-auto ${near ? "size-1.5" : "size-0.5"} `}
+                                    className={`dark:bg-neutral-500 bg-neutral-800 rounded-full transition-all duration-200 absolute inset-0 m-auto ${near ? "size-1.5" : "size-0.5"}`}
                                 />
                             </div>
                         );

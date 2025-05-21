@@ -25,6 +25,7 @@ export default function MobileMenu({ setMenuOpened }: MobileMenuProps) {
             'education-section',
             'certifications-section',
             'projects-section',
+            'stats-section'
         ];
 
         const section = document.getElementById(sectionIds[value]);
@@ -42,6 +43,7 @@ export default function MobileMenu({ setMenuOpened }: MobileMenuProps) {
                     <div onClick={() => handleTabChange(2)} className="hover:text-neutral-500 cursor-pointer backdrop-blur-sm bg-opacity-60 dark:bg-opacity-60 text-base text-center border border-neutral-200 bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-900 rounded-lg p-3 ">Education</div>
                     <div onClick={() => handleTabChange(3)} className="hover:text-neutral-500 cursor-pointer backdrop-blur-sm bg-opacity-60 dark:bg-opacity-60 text-base text-center border border-neutral-200 bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-900 rounded-lg p-3 ">Certifications</div>
                     <div onClick={() => handleTabChange(4)} className="hover:text-neutral-500 cursor-pointer backdrop-blur-sm bg-opacity-60 dark:bg-opacity-60 text-base text-center border border-neutral-200 bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-900 rounded-lg p-3 ">Projects</div>
+                    <div onClick={() => handleTabChange(5)} className="hover:text-neutral-500 cursor-pointer backdrop-blur-sm bg-opacity-60 dark:bg-opacity-60 text-base text-center border border-neutral-200 bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-900 rounded-lg p-3 ">Stats</div>
                     <div onClick={() => (window.location.href = "/Resume.pdf")} className="hover:text-neutral-500 cursor-pointer backdrop-blur-sm bg-opacity-60 dark:bg-opacity-60 text-base text-center border border-neutral-200 bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-900 rounded-lg p-3 ">Resume</div>
 
                 </div>

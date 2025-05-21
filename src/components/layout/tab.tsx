@@ -11,6 +11,7 @@ export default function Tab() {
             'education-section',
             'certifications-section',
             'projects-section',
+            'stats-section'
         ];
 
         const section = document.getElementById(sectionIds[value]);
@@ -31,6 +32,7 @@ export default function Tab() {
                         <div onClick={() => handleTabChange(2)} className="hover:text-neutral-500 cursor-pointer p-3">Education</div>
                         <div onClick={() => handleTabChange(3)} className="hover:text-neutral-500 cursor-pointer p-3">Certifications</div> 
                         <div onClick={() => handleTabChange(4)} className="hover:text-neutral-500 cursor-pointer p-3">Projects</div>
+                        <div onClick={() => handleTabChange(5)} className="hover:text-neutral-500 cursor-pointer p-3">Stats</div>
                         <div onClick={() => (window.location.href = "/Resume.pdf")} className="hover:text-neutral-500 cursor-pointer p-3">Resume</div>
                     </div>
             </div>
