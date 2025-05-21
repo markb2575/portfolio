@@ -74,8 +74,9 @@ export default function Body() {
     return (
         <div
             className={cn(
-                "px-10 w-full lg:w-2/3 justify-self-center mt-32 transition-opacity duration-200 relative -z-10",
-                isTop ? "opacity-0 " : "opacity-100"
+                "px-10 w-full lg:w-2/3 justify-self-center mt-32 transition-all duration-200 relative -z-10",
+                isTop ? "opacity-0 pointer-events-none scale-90" : "opacity-100 pointer-events-auto scale-100"
+
             )}
         >
             <div
