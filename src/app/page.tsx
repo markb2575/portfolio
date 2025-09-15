@@ -9,7 +9,6 @@ export default function Home() {
             <LoadAnimation />
             <CursorAnimation />
             <TopArrow />
-            
             <div className="relative z-10">
                 <Header />
                 <Body />

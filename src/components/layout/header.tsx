@@ -5,7 +5,7 @@ import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 import { ArrowDown, Menu, X } from "lucide-react";
 import { Tab } from "@/components/layout";
 import MobileMenu from "./mobile-menu";
-import useIsTop from "@/app/hooks/useIsTop";
+import useIsTop from "@/hooks/useIsTop";
 import { cn } from "@/lib/utils";
 
 const SECTION_IDS = [

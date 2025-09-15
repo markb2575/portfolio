@@ -1,7 +1,7 @@
 import { useTheme } from "next-themes";
 import { Moon, Sun } from "lucide-react";
 import { cn } from "@/lib/utils";
-import useIsTop from "@/app/hooks/useIsTop";
+import useIsTop from "@/hooks/useIsTop";
 export default function Tab() {
     const { setTheme, theme } = useTheme();
     const handleTabChange = (value: number) => {
