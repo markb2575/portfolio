@@ -145,7 +145,7 @@ export default function Header() {
             <div
                 className={cn(
                     "fixed bottom-20 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer",
-                    isTop ? "opacity-100" : "opacity-0"
+                    isTop ? "opacity-100 z-20" : "opacity-0 -z-20"
                 )}
                 onClick={() => handleTabChange(0)}
             >
