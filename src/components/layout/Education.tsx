@@ -24,9 +24,9 @@ export default function Education({ educationRef }: { educationRef: React.RefObj
               <CardDescription className="text-base">
                 B.S. {item.major}
               </CardDescription>
-              <CardDescription className="text-base">
+              {item.gpa && <CardDescription className="text-base">
                 GPA: {item.gpa}
-              </CardDescription>
+              </CardDescription>}
               <div className="flex flex-wrap gap-2 mt-5 cursor-default">
                 {item.courses.map((course, index) => (
                   <Badge

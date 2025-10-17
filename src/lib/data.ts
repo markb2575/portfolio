@@ -120,7 +120,7 @@ export const education = [
     major: "Computer Science",
     start_date: "Sep 2020",
     end_date: "May 2024",
-    gpa: "3.4",
+    gpa: null,
     courses: [
       "Artificial Intelligence",
       "Information and Data Management",
@@ -153,6 +153,14 @@ export const projects = [
     site_url: "https://www.markbassily.com",
     skills: ["Next.js", "Tailwind"],
     description: "Personal portfolio website",
+    highlight: true,
+  },
+  {
+    name: "Text/Regex Search",
+    github_url: "https://github.com/markb2575/regex-extension",
+    site_url: null,
+    skills: ["HTML", "JS", "CSS", "Browser Extension"],
+    description: "Finds, highlights, and navigates text and regex matches on a page through browser extension.",
     highlight: true,
   },
   {
