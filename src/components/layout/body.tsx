@@ -36,7 +36,7 @@ export default function Body() {
   return (
     <div
       className={cn(
-        "px-10 w-full lg:w-2/3 justify-self-center lg:mt-52 mt-32 transition-all duration-200 relative -z-10",
+        "px-10 w-full lg:w-2/3 justify-self-center mt-32 transition-all duration-200 relative -z-10",
         isTop
           ? "opacity-0 pointer-events-none scale-90"
           : "opacity-100 pointer-events-auto scale-100"
@@ -44,9 +44,8 @@ export default function Body() {
     >
       <div
         className="flex flex-col items-center gap-2"
-        onClick={() => window.scrollTo({ behavior: "smooth", top: 0 })}
       >
-        <div className="flex gap-5 dark:text-neutral-300 text-neutral-700 hover:opacity-50 cursor-pointer">
+        <div className="flex gap-5 dark:text-neutral-300 text-neutral-700 hover:opacity-50 cursor-pointer" onClick={() => window.scrollTo({ behavior: "smooth", top: 0 })}>
           <ArrowUp className="animate-bounce" />
           <ArrowUp className="animate-bounce delay-150" />
           <ArrowUp className="animate-bounce delay-300" />

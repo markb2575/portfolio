@@ -1,6 +1,7 @@
 import { useTheme } from "next-themes";
 import { Moon, Sun } from "lucide-react";
 import { cn } from "@/lib/utils";
+import useIsTop from "@/hooks/useIsTop";
 
 export default function Tab() {
     const { setTheme, theme } = useTheme();
@@ -24,11 +25,13 @@ export default function Tab() {
         }
     };
 
+    const isTop = useIsTop();
+
     return (
         <div
             className={cn(
                 "hidden md:flex fixed top-6 left-1/2 -translate-x-1/2 z-20 items-center gap-2 transition-opacity hover:opacity-100 hover:backdrop-blur-sm duration-200",
-                // isTop ? "opacity-100" : "opacity-0"
+                isTop ? "opacity-100" : "opacity-0"
             )}
         >
             <div className="backdrop-blur-sm bg-opacity-60 dark:bg-opacity-60 rounded-lg border border-neutral-200 bg-neutral-100 text-neutral-950 shadow-sm dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-50">
