@@ -1,3 +1,5 @@
+"use client";
+
 import { useRef, createRef } from "react";
 import useIsVisible from "@/hooks/useIsVisible";
 import useIsTop from "@/hooks/useIsTop";

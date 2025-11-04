@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ThemeProvider } from "@/components/theme-provider"
 import "./globals.css";
+import { Header } from "@/components/layout";
 
 export const metadata: Metadata = {
   title: "Mark's Portfolio",
@@ -22,6 +23,7 @@ export default function RootLayout({
             defaultTheme="dark"
             disableTransitionOnChange
           >
+            <Header />
             {children}
           </ThemeProvider>
         </body>

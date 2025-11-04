@@ -1,16 +1,13 @@
 "use client"
-import { Header, Body, TopArrow } from "@/components/layout";
-import CursorAnimation from "../components/layout/CursorAnimation";
-import LoadAnimation from "@/components/layout/LoadAnimation";
+import { Body, TopArrow, Hero, CursorAnimation, LoadAnimation } from "@/components/layout";
 export default function Home() {
-
     return (
         <div className="font-montserrat background no-scrollbar cursor-default">
             <LoadAnimation />
             <CursorAnimation />
             <TopArrow />
             <div className="relative z-10">
-                <Header />
+                <Hero />
                 <Body />
             </div>
         </div>
