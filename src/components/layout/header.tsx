@@ -77,12 +77,12 @@ export default function Header() {
     return (
         <div>
             {/* Desktop Tabs */}
-            <div className="hidden px-10 md:flex flex-col w-full md:w-2/3 justify-self-center">
+            <div className="hidden px-10 lg:flex flex-col w-full lg:w-2/3 justify-self-center">
                 <Tab />
             </div>
 
             {/* Mobile Menu Toggle */}
-            <div className="md:hidden px-10 flex flex-col justify-self-center">
+            <div className="lg:hidden px-10 flex flex-col justify-self-center">
                 <MenuToggleButton
                     opened={menuOpened}
                     toggle={() => setMenuOpened((prev) => !prev)}
