@@ -15,7 +15,7 @@ export default function Projects({ projectRefs }: { projectRefs: React.RefObject
             key={index}
             ref={projectRefs[index]}
             className={cn(
-                "flex flex-col md:w-72 flex-grow h-72 w-full fade-in bg-opacity-60 dark:bg-black/10 backdrop-blur-sm",
+                "flex flex-col md:w-72 flex-grow md:h-72 h-fit w-full fade-in bg-opacity-60 dark:bg-black/10 backdrop-blur-sm",
                 project.highlight && "border-opacity-50 border-black bg-black/5 dark:bg-white/5 "
             )}
           >
