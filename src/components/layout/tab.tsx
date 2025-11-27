@@ -1,7 +1,6 @@
 import { useTheme } from "next-themes";
 import { Moon, Sun } from "lucide-react";
 import { cn } from "@/lib/utils";
-import useIsTop from "@/hooks/useIsTop";
 
 export default function Tab() {
     const { setTheme, theme } = useTheme();
@@ -25,7 +24,6 @@ export default function Tab() {
         }
     };
 
-    const isTop = useIsTop();
 
     return (
         <div

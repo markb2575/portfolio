@@ -2,7 +2,6 @@
 
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 import { ArrowDown } from "lucide-react";
-import useIsTop from "@/hooks/useIsTop";
 import { cn } from "@/lib/utils";
 
 const SECTION_IDS = [
@@ -39,7 +38,6 @@ const AnimatedText = ({
 );
 
 export default function Hero() {
-  const isTop = useIsTop();
 
   const handleTabChange = (value: number) => {
     const section = document.getElementById(SECTION_IDS[value]);
