@@ -161,7 +161,7 @@ export const projects = [
     site_url: null,
     skills: ["HTML", "JS", "CSS", "Browser Extension"],
     description: "Finds, highlights, and navigates text and regex matches on a page through browser extension.",
-    highlight: true,
+    highlight: false,
   },
   {
     name: "till-failure",

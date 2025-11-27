@@ -17,7 +17,7 @@ export default function RootLayout({
     <>
       <html lang="en" suppressHydrationWarning>
         <head />
-        <body>
+        <body className="font-montserrat background no-scrollbar cursor-default">
           <ThemeProvider
             attribute="class"
             defaultTheme="dark"

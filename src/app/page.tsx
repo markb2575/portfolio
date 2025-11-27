@@ -2,7 +2,7 @@
 import { Body, TopArrow, Hero, CursorAnimation, LoadAnimation } from "@/components/layout";
 export default function Home() {
     return (
-        <div className="font-montserrat background no-scrollbar cursor-default">
+        <div>
             <LoadAnimation />
             <CursorAnimation />
             <TopArrow />
