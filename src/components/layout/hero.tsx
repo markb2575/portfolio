@@ -54,18 +54,10 @@ export default function Hero() {
       {/* Centered Text */}
       <div className="flex flex-col items-center justify-center flex-1 text-center">
         <AnimatedText
-          text="Software Engineer"
-          delay={0.1}
-          className="mb-10 text-neutral-600 dark:text-neutral-300 font-normal text-4xl"
-          animationClass="animate-pulse"
-        />
-
-        <AnimatedText
           text="Mark Bassily"
           delay={0.2}
           className="mb-16 gap-1 font-light text-5xl text-neutral-600 dark:text-neutral-300"
         />
-
         <div className="flex gap-6 justify-center mb-10">
           <FaGithub
             className="dark:text-neutral-300 text-neutral-600 size-7 drop-shadow-md cursor-pointer hover:opacity-50"
