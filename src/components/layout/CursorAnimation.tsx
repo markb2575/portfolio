@@ -5,43 +5,57 @@ import { createNoise3D } from "simplex-noise";
 
 const THEME_CONFIG = {
   light: {
-    background: "rgba(225, 225, 225, 0.6)",
+    background: "rgb(225, 225, 225)",
     particle: "rgb(0, 0, 0)",
   },
   dark: {
-    background: "rgba(17, 17, 17, 0.6)",
+    background: "rgb(17, 17, 17)",
     particle: "rgb(225, 225, 225)",
   },
 };
 
-type Particle = {
+const CONFIG = {
+  spacingDesktop: 30, // average px between stars
+  spacingMobile: 38,
+  maxParticles: 1800, // caps the star count on large screens
+  minParticles: 300, // floor for adaptive quality
+  noiseScale: 0.006,
+  noiseSpeed: 0.12, // noise time units per second
+  noiseStrength: 6, // px of drift around each star's home
+  mouseRadius: 200,
+  mouseStrength: 60, // max px a star is pushed away from the cursor
+  swirl: 0.9, // max radians stars are twisted around the cursor
+  mouseFollow: 20, // how quickly the smoothed cursor catches up (1/s)
+  ease: 10, // how quickly stars settle toward their target (1/s)
+  twinkle: 0.35, // size variation from twinkling (fraction of base size)
+  streak: 0.025, // seconds of motion shown as a trail behind moving stars
+  maxStreak: 18, // px
+  fadeInMs: 1200,
+  frameBudgetMs: 8, // drop stars if drawing takes longer than this
+};
+
+// Faint distant stars move and react less than bright near ones, giving depth
+const LAYERS = [
+  { share: 0.72, minSize: 0.5, maxSize: 0.55, alpha: 0.35, depth: 0.5, round: false },
+  { share: 0.2, minSize: 0.7, maxSize: 0.85, alpha: 0.6, depth: 0.75, round: false },
+  { share: 0.08, minSize: 0.85, maxSize: 1, alpha: 0.95, depth: 1, round: true },
+];
+
+type Star = {
   homeX: number;
   homeY: number;
   x: number;
   y: number;
-  vx: number;
-  vy: number;
-  currentSize: number;
-  currentAlpha: number;
+  prevX: number;
+  prevY: number;
+  size: number;
+  layer: number;
+  phase: number;
+  twinkleSpeed: number;
 };
 
 export default function ParticleBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const animationIdRef = useRef<number | null>(null);
-  const noise3D = useRef(createNoise3D()).current;
-
-  const currentColors = useRef(THEME_CONFIG.dark);
-  const particles = useRef<Particle[]>([]);
-  const mouse = useRef({ x: -1000, y: -1000 });
-
-  const config = useRef({
-    gridSpacing: 50,
-    mouseRadius: 120,
-    spring: 0.005,
-    friction: 0.9,
-    noiseStrength: 15,
-    particleSize: 0.75,
-  });
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -50,158 +64,238 @@ export default function ParticleBackground() {
     const ctx = canvas.getContext("2d", { alpha: false });
     if (!ctx) return;
 
-    let time = 0;
+    const noise3D = createNoise3D();
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-    /** Theme switching */
+    let colors = THEME_CONFIG.dark;
+    let stars: Star[] = [];
+    let time = 0;
+    let clock = 0;
+    let lastFrame = 0;
+    let startTime = 0;
+    let streakScale = 0;
+    let frameCostAvg = 0;
+    let framesSinceResize = 0;
+    let animationId: number | null = null;
+
+    const mouse = { x: -1000, y: -1000 };
+    const smoothMouse = { x: -1000, y: -1000 };
+
+    // Target position for a star, written to tx/ty to avoid per-frame allocations
+    let tx = 0;
+    let ty = 0;
+    const target = (s: Star) => {
+      const depth = LAYERS[s.layer].depth;
+      const a = noise3D(s.homeX * CONFIG.noiseScale, s.homeY * CONFIG.noiseScale, time) * Math.PI * 2;
+      tx = s.homeX + Math.cos(a) * CONFIG.noiseStrength * depth;
+      ty = s.homeY + Math.sin(a) * CONFIG.noiseStrength * depth;
+
+      const dx = tx - smoothMouse.x;
+      const dy = ty - smoothMouse.y;
+      const distSq = dx * dx + dy * dy;
+      const r = CONFIG.mouseRadius;
+      if (distSq < r * r && distSq > 0.01) {
+        const dist = Math.sqrt(distSq);
+        const falloff = 1 - dist / r;
+        const f2 = falloff * falloff * depth;
+        // twist around the cursor, then push outward
+        const angle = CONFIG.swirl * f2;
+        const cos = Math.cos(angle);
+        const sin = Math.sin(angle);
+        const scale = 1 + (CONFIG.mouseStrength * f2) / dist;
+        tx = smoothMouse.x + (dx * cos - dy * sin) * scale;
+        ty = smoothMouse.y + (dx * sin + dy * cos) * scale;
+      }
+    };
+
+    const pickLayer = () => {
+      let r = Math.random();
+      for (let i = 0; i < LAYERS.length - 1; i++) {
+        if (r < LAYERS[i].share) return i;
+        r -= LAYERS[i].share;
+      }
+      return LAYERS.length - 1;
+    };
+
+    const initStars = () => {
+      const w = canvas.width;
+      const h = canvas.height;
+      const spacing = w < 768 ? CONFIG.spacingMobile : CONFIG.spacingDesktop;
+      const count = Math.min(CONFIG.maxParticles, Math.round((w * h) / (spacing * spacing)));
+
+      stars = [];
+      for (let i = 0; i < count; i++) {
+        const layer = pickLayer();
+        const { minSize, maxSize } = LAYERS[layer];
+        const s: Star = {
+          homeX: Math.random() * w,
+          homeY: Math.random() * h,
+          x: 0,
+          y: 0,
+          prevX: 0,
+          prevY: 0,
+          size: minSize + Math.random() * (maxSize - minSize),
+          layer,
+          phase: Math.random() * Math.PI * 2,
+          twinkleSpeed: 0.5 + Math.random() * 1.5,
+        };
+        target(s);
+        s.x = s.prevX = tx;
+        s.y = s.prevY = ty;
+        stars.push(s);
+      }
+      framesSinceResize = 0;
+      frameCostAvg = 0;
+    };
+
+    const draw = (fade: number) => {
+      ctx.globalAlpha = 1;
+      ctx.fillStyle = colors.background;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = colors.particle;
+      ctx.strokeStyle = colors.particle;
+      ctx.lineCap = "round";
+
+      // One fill for still stars and one stroke for streaks, per layer
+      for (let l = 0; l < LAYERS.length; l++) {
+        const layer = LAYERS[l];
+        ctx.globalAlpha = layer.alpha * fade;
+
+        ctx.beginPath();
+        for (const s of stars) {
+          if (s.layer !== l) continue;
+          const vx = (s.x - s.prevX) * streakScale;
+          const vy = (s.y - s.prevY) * streakScale;
+          if (vx * vx + vy * vy > 1) continue;
+          const size = s.size * fade * (1 + CONFIG.twinkle * Math.sin(clock * s.twinkleSpeed + s.phase));
+          if (layer.round) {
+            ctx.moveTo(s.x + size, s.y);
+            ctx.arc(s.x, s.y, size, 0, Math.PI * 2);
+          } else {
+            ctx.rect(s.x - size, s.y - size, size * 2, size * 2);
+          }
+        }
+        ctx.fill();
+
+        if (!streakScale) continue;
+        ctx.lineWidth = (layer.minSize + layer.maxSize) * fade;
+        ctx.beginPath();
+        for (const s of stars) {
+          if (s.layer !== l) continue;
+          let vx = (s.x - s.prevX) * streakScale;
+          let vy = (s.y - s.prevY) * streakScale;
+          const lenSq = vx * vx + vy * vy;
+          if (lenSq <= 1) continue;
+          if (lenSq > CONFIG.maxStreak * CONFIG.maxStreak) {
+            const k = CONFIG.maxStreak / Math.sqrt(lenSq);
+            vx *= k;
+            vy *= k;
+          }
+          ctx.moveTo(s.x - vx, s.y - vy);
+          ctx.lineTo(s.x, s.y);
+        }
+        ctx.stroke();
+      }
+    };
+
+    const animate = (now: number) => {
+      if (!startTime) startTime = lastFrame = now;
+      // clamp so returning to a background tab doesn't cause a jump
+      const dt = Math.min((now - lastFrame) / 1000, 0.05);
+      lastFrame = now;
+
+      const workStart = performance.now();
+
+      time += dt * CONFIG.noiseSpeed;
+      clock += dt;
+      const follow = 1 - Math.exp(-dt * CONFIG.mouseFollow);
+      smoothMouse.x += (mouse.x - smoothMouse.x) * follow;
+      smoothMouse.y += (mouse.y - smoothMouse.y) * follow;
+
+      const ease = 1 - Math.exp(-dt * CONFIG.ease);
+      for (const s of stars) {
+        s.prevX = s.x;
+        s.prevY = s.y;
+        target(s);
+        s.x += (tx - s.x) * ease;
+        s.y += (ty - s.y) * ease;
+      }
+      // convert per-frame movement into a trail covering CONFIG.streak seconds
+      streakScale = dt > 0 ? CONFIG.streak / dt : 0;
+
+      const t = Math.min(1, (now - startTime) / CONFIG.fadeInMs);
+      draw(t * (2 - t));
+
+      // Adaptive quality: drop stars on devices that can't keep up
+      frameCostAvg = frameCostAvg * 0.95 + (performance.now() - workStart) * 0.05;
+      if (++framesSinceResize > 90 && frameCostAvg > CONFIG.frameBudgetMs && stars.length > CONFIG.minParticles) {
+        stars.length = Math.max(CONFIG.minParticles, Math.floor(stars.length * 0.8));
+        framesSinceResize = 0;
+      }
+
+      animationId = requestAnimationFrame(animate);
+    };
+
+    const drawStatic = () => {
+      streakScale = 0;
+      draw(1);
+    };
+
+    const start = () => {
+      if (animationId) cancelAnimationFrame(animationId);
+      animationId = null;
+      if (reducedMotion.matches) {
+        drawStatic();
+      } else {
+        startTime = 0;
+        animationId = requestAnimationFrame(animate);
+      }
+    };
+
     const updateTheme = () => {
       const isDark = document.documentElement.classList.contains("dark");
-      currentColors.current = isDark ? THEME_CONFIG.dark : THEME_CONFIG.light;
+      colors = isDark ? THEME_CONFIG.dark : THEME_CONFIG.light;
+      if (reducedMotion.matches) drawStatic();
+    };
+
+    const handleResize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      initStars();
+      if (reducedMotion.matches) drawStatic();
+    };
+
+    const handleMouseMove = (e: MouseEvent) => {
+      if (mouse.x === -1000) {
+        smoothMouse.x = e.clientX;
+        smoothMouse.y = e.clientY;
+      }
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
     };
 
     updateTheme();
-
     const observer = new MutationObserver(updateTheme);
     observer.observe(document.documentElement, {
       attributes: true,
       attributeFilter: ["class"],
     });
 
-    /** Initialize particle grid */
-    const initGrid = () => {
-      particles.current = [];
-      const spacing = config.current.gridSpacing;
-
-      const cols = Math.ceil(canvas.width / spacing);
-      const rows = Math.ceil(canvas.height / spacing);
-
-      for (let y = 0; y < rows; y++) {
-        for (let x = 0; x < cols; x++) {
-          const px = x * spacing;
-          const py = y * spacing;
-
-          particles.current.push({
-            homeX: px,
-            homeY: py,
-            x: px,
-            y: py,
-            vx: 0,
-            vy: 0,
-            currentSize: 0,
-            currentAlpha: 0,
-          });
-        }
-      }
-    };
-
-    const handleResize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      config.current.gridSpacing = window.innerWidth < 768 ? 38 : 30;
-      initGrid();
-    };
-
-    const handleMouseMove = (e: MouseEvent) => {
-      mouse.current.x = e.clientX;
-      mouse.current.y = e.clientY;
-    };
-
-    const drawPill = (
-      ctx: CanvasRenderingContext2D,
-      x: number,
-      y: number,
-      angle: number,
-      size: number,
-      length: number
-    ) => {
-      ctx.save();
-      ctx.translate(x, y);
-      ctx.rotate(angle);
-      ctx.beginPath();
-      if (ctx.roundRect) {
-        ctx.roundRect(-length / 2, -size, length, size * 2, size);
-      } else {
-        ctx.rect(-length / 2, -size, length, size * 2);
-      }
-      ctx.restore();
-    };
-
-    /** Animation loop */
-    const animate = () => {
-      ctx.fillStyle = currentColors.current.background;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      time += 0.005;
-
-      const {
-        mouseRadius,
-        spring,
-        friction,
-        noiseStrength,
-        particleSize,
-      } = config.current;
-
-      const lerpSpeed = 0.05;
-
-      particles.current.forEach((p) => {
-        const nX =
-          noise3D(p.homeX * 0.01, p.homeY * 0.01, time) * noiseStrength;
-        const nY =
-          noise3D(p.homeX * 0.01 + 500, p.homeY * 0.01 + 500, time) *
-          noiseStrength;
-
-        const targetX = p.homeX + nX;
-        const targetY = p.homeY + nY;
-
-        const dx = p.x - mouse.current.x;
-        const dy = p.y - mouse.current.y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-
-        if (dist < mouseRadius) {
-          const force = (mouseRadius - dist) / mouseRadius;
-          const angle = Math.atan2(dy, dx);
-          const push = force * 6;
-          p.vx += Math.cos(angle) * push;
-          p.vy += Math.sin(angle) * push;
-        }
-
-        p.vx += (targetX - p.x) * spring;
-        p.vy += (targetY - p.y) * spring;
-        p.vx *= friction;
-        p.vy *= friction;
-
-        p.x += p.vx;
-        p.y += p.vy;
-
-        p.currentSize += (particleSize - p.currentSize) * lerpSpeed;
-        p.currentAlpha += (1 - p.currentAlpha) * lerpSpeed;
-
-        const baseColor = currentColors.current.particle;
-        ctx.fillStyle = baseColor.replace(")", `, ${p.currentAlpha})`);
-
-        const size = Math.max(0.1, p.currentSize);
-        const angle = Math.atan2(mouse.current.y - p.y, mouse.current.x - p.x);
-        const length = size * 2;
-
-        drawPill(ctx, p.x, p.y, angle, size, length);
-        ctx.fill();
-      });
-
-      animationIdRef.current = requestAnimationFrame(animate);
-    };
-
     handleResize();
     window.addEventListener("resize", handleResize);
     window.addEventListener("mousemove", handleMouseMove);
-
-    animationIdRef.current = requestAnimationFrame(animate);
+    reducedMotion.addEventListener("change", start);
+    start();
 
     return () => {
       observer.disconnect();
       window.removeEventListener("resize", handleResize);
       window.removeEventListener("mousemove", handleMouseMove);
-      if (animationIdRef.current) cancelAnimationFrame(animationIdRef.current);
+      reducedMotion.removeEventListener("change", start);
+      if (animationId) cancelAnimationFrame(animationId);
     };
-  }, [noise3D]);
+  }, []);
 
   return (
     <canvas
