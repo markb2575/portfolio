@@ -21,6 +21,8 @@ export const skills = {
     "AWS Cognito",
     "AWS SES",
     "AWS Amplify",
+    "Load Balancing",
+    "App Gateway"
   ],
   "Networking & Monitoring": [
     "Zscaler",
@@ -32,7 +34,6 @@ export const skills = {
     "Juniper Mist",
     "SevOne",
     "DNS",
-    "Network Operations",
   ],
   "Languages & Frameworks": [
     "SQL",
