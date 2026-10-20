@@ -20,16 +20,16 @@ export default function Stats({ statsRef }: { statsRef: React.RefObject<HTMLDivE
               Updated and fetched through API Gateway with AWS Lambda and stored in DynamoDB.
             </CardDescription>
           </CardHeader>
-          <CardContent className="flex flex-col gap-4 text-lg text-zinc-800 dark:text-zinc-100">
+          <CardContent className="flex flex-col gap-4 text-lg text-umber-800 dark:text-zinc-100">
             <div className="flex items-center gap-5 px-2 py-1 rounded-md">
               <span className="font-medium">Total Clicks</span>
-              <span className="font-mono text-xl text-neutral-600 dark:text-neutral-400">
+              <span className="font-mono text-xl text-umber-600 dark:text-neutral-400">
                 {clicks}
               </span>
             </div>
             <div className="flex items-center gap-5 px-2 py-1 rounded-md">
               <span className="font-medium">Total Visits</span>
-              <span className="font-mono text-xl text-neutral-600 dark:text-neutral-400">
+              <span className="font-mono text-xl text-umber-600 dark:text-neutral-400">
                 {visits}
               </span>
             </div>

@@ -5,7 +5,7 @@ import { createNoise3D } from "simplex-noise";
 
 const THEME_CONFIG = {
   light: {
-    particle: "rgb(70, 48, 30)",
+    particle: "rgb(78, 66, 56)",
     layerAlpha: [0.7, 0.8, 0.9], // per LAYERS entry; small specks need more opacity on light
   },
   dark: {

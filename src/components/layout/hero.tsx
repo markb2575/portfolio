@@ -56,23 +56,23 @@ export default function Hero() {
         <AnimatedText
           text="Mark Bassily"
           delay={0.2}
-          className="mb-16 gap-1 font-light text-5xl text-neutral-600 dark:text-neutral-300"
+          className="mb-16 gap-1 font-light text-5xl text-umber-600 dark:text-neutral-300"
         />
         <div className="flex gap-6 justify-center mb-10">
           <FaGithub
-            className="dark:text-neutral-300 text-neutral-600 size-7 drop-shadow-md cursor-pointer hover:opacity-50"
+            className="dark:text-neutral-300 text-umber-600 size-7 drop-shadow-md cursor-pointer hover:opacity-50"
             onClick={() =>
               window.open("https://github.com/markb2575", "_blank")
             }
           />
           <FaLinkedin
-            className="dark:text-neutral-300 text-neutral-600 size-7 drop-shadow-md cursor-pointer hover:opacity-50"
+            className="dark:text-neutral-300 text-umber-600 size-7 drop-shadow-md cursor-pointer hover:opacity-50"
             onClick={() =>
               window.open("https://linkedin.com/in/markb2575", "_blank")
             }
           />
           <FaEnvelope
-            className="dark:text-neutral-300 text-neutral-600 size-7 drop-shadow-md cursor-pointer hover:opacity-50"
+            className="dark:text-neutral-300 text-umber-600 size-7 drop-shadow-md cursor-pointer hover:opacity-50"
             onClick={() =>
               window.open("mailto:markbassily2575@gmail.com", "_blank")
             }
@@ -88,7 +88,7 @@ export default function Hero() {
         )}
         onClick={() => handleTabChange(0)}
       >
-        <div className="flex gap-5 dark:text-neutral-300 text-neutral-700 hover:opacity-50">
+        <div className="flex gap-5 dark:text-neutral-300 text-umber-700 hover:opacity-50">
           <ArrowDown className="animate-bounce" />
           <ArrowDown className="animate-bounce delay-150" />
           <ArrowDown className="animate-bounce delay-300" />

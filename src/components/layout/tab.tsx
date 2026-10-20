@@ -32,47 +32,47 @@ export default function Tab() {
                 // isTop ? "opacity-100" : "opacity-0"
             )}
         >
-            <div className="backdrop-blur-sm bg-opacity-60 dark:bg-opacity-60 rounded-lg border border-sand-300 bg-sand-100 text-neutral-800 shadow-sm dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-50">
+            <div className="backdrop-blur-sm bg-opacity-60 dark:bg-opacity-60 rounded-lg border border-sand-300 bg-sand-100 text-umber-800 shadow-sm dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-50">
                 <div className="flex gap-3 mx-5">
                     <div
                         onClick={() => handleTabChange(0)}
-                        className="hover:text-neutral-500 cursor-pointer p-3"
+                        className="hover:text-umber-500 dark:hover:text-neutral-500 cursor-pointer p-3"
                     >
                         Skills
                     </div>
                     <div
                         onClick={() => handleTabChange(1)}
-                        className="hover:text-neutral-500 cursor-pointer p-3"
+                        className="hover:text-umber-500 dark:hover:text-neutral-500 cursor-pointer p-3"
                     >
                         Experience
                     </div>
                     <div
                         onClick={() => handleTabChange(2)}
-                        className="hover:text-neutral-500 cursor-pointer p-3"
+                        className="hover:text-umber-500 dark:hover:text-neutral-500 cursor-pointer p-3"
                     >
                         Education
                     </div>
                     <div
                         onClick={() => handleTabChange(3)}
-                        className="hover:text-neutral-500 cursor-pointer p-3"
+                        className="hover:text-umber-500 dark:hover:text-neutral-500 cursor-pointer p-3"
                     >
                         Certifications
                     </div>
                     <div
                         onClick={() => handleTabChange(4)}
-                        className="hover:text-neutral-500 cursor-pointer p-3"
+                        className="hover:text-umber-500 dark:hover:text-neutral-500 cursor-pointer p-3"
                     >
                         Projects
                     </div>
                     <div
                         onClick={() => handleTabChange(5)}
-                        className="hover:text-neutral-500 cursor-pointer p-3"
+                        className="hover:text-umber-500 dark:hover:text-neutral-500 cursor-pointer p-3"
                     >
                         Stats
                     </div>
                     <div
                         onClick={() => window.open("/Resume.pdf", "_blank")}
-                        className="hover:text-neutral-500 cursor-pointer p-3"
+                        className="hover:text-umber-500 dark:hover:text-neutral-500 cursor-pointer p-3"
                     >
                         Resume
                     </div>

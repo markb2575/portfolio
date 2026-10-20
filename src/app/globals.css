@@ -60,19 +60,19 @@ body {
   
 @layer components {
     .background {
-        @apply bg-[var(--page-bg)] min-h-screen py-10 px-[5%] overflow-y-auto selection:text-blue-500;
+        @apply bg-[var(--page-bg)] text-umber-900 dark:text-white min-h-screen py-10 px-[5%] overflow-y-auto selection:text-blue-500;
     }
 
     .header {
-        @apply dark:text-neutral-800 text-neutral-400 transition-colors flex flex-row items-center justify-between;
+        @apply dark:text-neutral-800 text-umber-400 transition-colors flex flex-row items-center justify-between;
     }
 
     .title {
-        @apply font-montserrat font-extralight dark:text-neutral-300 text-neutral-700 transition-colors text-6xl text-center;
+        @apply font-montserrat font-extralight dark:text-neutral-300 text-umber-700 transition-colors text-6xl text-center;
     }
 
     .section {
-        @apply font-montserrat font-light dark:text-neutral-300 text-neutral-700 transition-colors text-4xl mb-4 pt-4
+        @apply font-montserrat font-light dark:text-neutral-300 text-umber-700 transition-colors text-4xl mb-4 pt-4
     }
 
     /* .theme-toggle {
@@ -80,11 +80,11 @@ body {
     } */
 
     .theme-toggle-icon {
-        @apply dark:text-neutral-300 text-neutral-800 transition-colors text-lg font-bold size-6;
+        @apply dark:text-neutral-300 text-umber-800 transition-colors text-lg font-bold size-6;
     }
 
     .gradient-bg {
-        @apply dark:bg-gradient-to-br dark:from-neutral-200 dark:to-neutral-400 bg-gradient-to-br from-neutral-500 to-neutral-700
+        @apply dark:bg-gradient-to-br dark:from-neutral-200 dark:to-neutral-400 bg-gradient-to-br from-umber-500 to-umber-700
         
     }
 

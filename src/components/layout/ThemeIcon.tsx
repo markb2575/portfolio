@@ -11,8 +11,8 @@ export default function ThemeIcon({ theme }: { theme: string | undefined }) {
     if (!mounted) return <span className="theme-toggle-icon block" />;
 
     return theme === "light" ? (
-        <Sun className="theme-toggle-icon hover:text-neutral-500" />
+        <Sun className="theme-toggle-icon hover:text-umber-500 dark:hover:text-neutral-500" />
     ) : (
-        <Moon className="theme-toggle-icon hover:text-neutral-500" />
+        <Moon className="theme-toggle-icon hover:text-umber-500 dark:hover:text-neutral-500" />
     );
 }

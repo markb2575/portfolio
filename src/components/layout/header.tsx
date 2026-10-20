@@ -15,12 +15,12 @@ const MenuToggleButton = ({
 }) => (
     <div
         onClick={toggle}
-        className="cursor-pointer z-50 fixed top-6 right-2 backdrop-blur-sm bg-opacity-60 dark:bg-opacity-60 border border-sand-300 bg-sand-100 dark:border-neutral-800 dark:bg-neutral-900 rounded-lg p-3"
+        className="cursor-pointer z-50 fixed top-6 right-2 backdrop-blur-sm bg-opacity-60 dark:bg-opacity-60 border border-sand-300 bg-sand-100 dark:border-neutral-800 dark:bg-neutral-900 text-umber-950 dark:text-white rounded-lg p-3"
     >
         {opened ? (
-            <X className="hover:text-neutral-500 transition-colors" />
+            <X className="hover:text-umber-500 dark:hover:text-neutral-500 transition-colors" />
         ) : (
-            <Menu className="hover:text-neutral-500 transition-colors" />
+            <Menu className="hover:text-umber-500 dark:hover:text-neutral-500 transition-colors" />
         )}
     </div>
 );

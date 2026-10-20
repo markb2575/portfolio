@@ -24,7 +24,7 @@ export default function Certification({ certificationsRef }: { certificationsRef
               </CardDescription>
             </CardContent>
             <FaAws
-              className="mb-5 ml-5 dark:text-neutral-300 text-neutral-600 size-8 drop-shadow-md hover:opacity-50 cursor-pointer"
+              className="mb-5 ml-5 dark:text-neutral-300 text-umber-600 size-8 drop-shadow-md hover:opacity-50 cursor-pointer"
               onClick={() => window.open(item.url, "_blank")}
             />
           </Card>

@@ -28,6 +28,16 @@ const config: Config = {
                     200: '#a8997f',
                     300: '#b8ab91',
                 },
+                // neutral greys with a subtle warm tint, for light mode text
+                umber: {
+                    400: '#9b938a',
+                    500: '#70665d',
+                    600: '#524942',
+                    700: '#45392e',
+                    800: '#2f251c',
+                    900: '#251c14',
+                    950: '#1e160f',
+                },
             },
             borderRadius: {
                 lg: 'var(--radius)',

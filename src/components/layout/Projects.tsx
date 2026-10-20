@@ -39,13 +39,13 @@ export default function Projects({ projectRefs }: { projectRefs: React.RefObject
             <div className="flex">
               {project.github_url && (
                 <FaGithub
-                  className="mb-5 ml-5 dark:text-neutral-300 text-neutral-600 size-7 drop-shadow-md hover:opacity-50 cursor-pointer"
+                  className="mb-5 ml-5 dark:text-neutral-300 text-umber-600 size-7 drop-shadow-md hover:opacity-50 cursor-pointer"
                   onClick={() => window.open(project.github_url, "_blank")}
                 />
               )}
               {project.site_url && (
                 <ExternalLink
-                  className="mb-5 ml-5 dark:text-neutral-300 text-neutral-600 size-7 drop-shadow-md hover:opacity-50 cursor-pointer"
+                  className="mb-5 ml-5 dark:text-neutral-300 text-umber-600 size-7 drop-shadow-md hover:opacity-50 cursor-pointer"
                   onClick={() => window.open(project.site_url, "_blank")}
                 />
               )}

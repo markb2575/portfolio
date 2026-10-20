@@ -24,7 +24,7 @@ export default function TopArrow() {
     return (
         <FaArrowUp
             onClick={scrollToTop}
-            className="fixed right-5 bottom-5 dark:text-white text-neutral-900 cursor-pointer hover:opacity-50 z-20"
+            className="fixed right-5 bottom-5 dark:text-white text-umber-900 cursor-pointer hover:opacity-50 z-20"
             size={24}
         />
     );
