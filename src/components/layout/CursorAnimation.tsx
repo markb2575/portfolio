@@ -5,12 +5,10 @@ import { createNoise3D } from "simplex-noise";
 
 const THEME_CONFIG = {
   light: {
-    background: "rgb(207, 194, 169)",
     particle: "rgb(70, 48, 30)",
     layerAlpha: [0.7, 0.8, 0.9], // per LAYERS entry; small specks need more opacity on light
   },
   dark: {
-    background: "rgb(17, 17, 17)",
     particle: "rgb(225, 225, 225)",
     layerAlpha: [0.35, 0.6, 0.95],
   },
@@ -70,6 +68,7 @@ export default function ParticleBackground() {
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
     let colors = THEME_CONFIG.dark;
+    let background = "rgb(17, 17, 17)";
     let stars: Star[] = [];
     let time = 0;
     let clock = 0;
@@ -152,7 +151,7 @@ export default function ParticleBackground() {
 
     const draw = (fade: number) => {
       ctx.globalAlpha = 1;
-      ctx.fillStyle = colors.background;
+      ctx.fillStyle = background;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       ctx.fillStyle = colors.particle;
@@ -258,12 +257,14 @@ export default function ParticleBackground() {
     const updateTheme = () => {
       const isDark = document.documentElement.classList.contains("dark");
       colors = isDark ? THEME_CONFIG.dark : THEME_CONFIG.light;
+      // match the page background so the canvas and load overlay never differ
+      background = getComputedStyle(document.documentElement).getPropertyValue("--page-bg").trim() || background;
       if (reducedMotion.matches) drawStatic();
     };
 
     const handleResize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      canvas.width = canvas.clientWidth; // excludes the scrollbar, unlike innerWidth
+      canvas.height = canvas.clientHeight;
       initStars();
       if (reducedMotion.matches) drawStatic();
     };
@@ -302,7 +303,7 @@ export default function ParticleBackground() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-0 transition-colors duration-500"
+      className="fixed inset-0 w-full h-full pointer-events-none z-0 transition-colors duration-500"
     />
   );
 }

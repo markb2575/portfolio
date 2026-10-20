@@ -17,10 +17,13 @@ export default function RootLayout({
     <>
       <html lang="en" suppressHydrationWarning>
         <head />
-        <body className="font-montserrat background no-scrollbar cursor-default">
+        <body className="font-montserrat background cursor-default">
           <ThemeProvider
             attribute="class"
             defaultTheme="dark"
+            // next-themes 0.4.5's pre-paint script throws when `value` is unset,
+            // so the theme class only lands after hydration (light flash in dark mode)
+            value={{ light: "light", dark: "dark" }}
             disableTransitionOnChange
           >
             <Header />

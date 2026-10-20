@@ -5,3 +5,4 @@ export { default as Tab } from './tab';
 export { default as TopArrow } from './toparrow';
 export { default as CursorAnimation } from './CursorAnimation';
 export { default as LoadAnimation } from './LoadAnimation';
+export { default as Scrollbar } from './Scrollbar';

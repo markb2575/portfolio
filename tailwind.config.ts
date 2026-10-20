@@ -24,9 +24,9 @@ const config: Config = {
                 // warm greys for light mode surfaces
                 sand: {
                     50: '#d1c6b0',
-                    100: '#b8aa92',
+                    100: '#c7b9a2',
                     200: '#a8997f',
-                    300: '#b8a98c',
+                    300: '#b8ab91',
                 },
             },
             borderRadius: {

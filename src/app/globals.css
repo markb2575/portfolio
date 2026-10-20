@@ -11,6 +11,26 @@ body {
 @layer base {
     :root {
         --radius: 0.5rem;
+        /* page background: used by the body, load overlay and star canvas */
+        --page-bg: rgb(207, 194, 169);
+        /* colours for the overlay scrollbar in Scrollbar.tsx */
+        --scrollbar-thumb: #a6967a;
+        --scrollbar-thumb-hover: #8a7a5e;
+    }
+    .dark {
+        --page-bg: rgb(17, 17, 17);
+        --scrollbar-thumb: #4a4a4a;
+        --scrollbar-thumb-hover: #6a6a6a;
+    }
+
+    /* The native scrollbar reserves a solid strip; hide it in favour of Scrollbar.tsx */
+    html,
+    body {
+        scrollbar-width: none;
+    }
+    html::-webkit-scrollbar,
+    body::-webkit-scrollbar {
+        display: none;
     }
 }
 @layer utilities {
@@ -40,7 +60,7 @@ body {
   
 @layer components {
     .background {
-        @apply dark:bg-neutral-950 bg-sand-200 min-h-screen py-10 px-[5%] overflow-y-auto no-scrollbar selection:text-blue-500;
+        @apply bg-[var(--page-bg)] min-h-screen py-10 px-[5%] overflow-y-auto selection:text-blue-500;
     }
 
     .header {

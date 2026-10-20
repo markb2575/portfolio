@@ -16,7 +16,7 @@ export default function LoadAnimation() {
 
     return (
         <div 
-            className={`fixed inset-0 z-50 dark:bg-neutral-950 bg-sand-200 transition-opacity duration-1000 ${
+            className={`fixed inset-0 z-50 bg-[var(--page-bg)] transition-opacity duration-1000 ${
                 isVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'
             }`}
         />
