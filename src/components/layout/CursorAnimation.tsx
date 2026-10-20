@@ -25,6 +25,7 @@ const CONFIG = {
   mouseRadius: 200,
   mouseStrength: 60, // max px a star is pushed away from the cursor
   swirl: 0.9, // max radians stars are twisted around the cursor
+  orbitSpeed: 1.5, // rad/s stars circle the cursor at the centre (slower further out)
   mouseFollow: 20, // how quickly the smoothed cursor catches up (1/s)
   ease: 10, // how quickly stars settle toward their target (1/s)
   twinkle: 0.35, // size variation from twinkling (fraction of base size)
@@ -52,6 +53,7 @@ type Star = {
   layer: number;
   phase: number;
   twinkleSpeed: number;
+  orbit: number; // accumulated radians this star has circled the cursor
 };
 
 export default function ParticleBackground() {
@@ -85,7 +87,7 @@ export default function ParticleBackground() {
     // Target position for a star, written to tx/ty to avoid per-frame allocations
     let tx = 0;
     let ty = 0;
-    const target = (s: Star) => {
+    const target = (s: Star, dt = 0) => {
       const depth = LAYERS[s.layer].depth;
       const a = noise3D(s.homeX * CONFIG.noiseScale, s.homeY * CONFIG.noiseScale, time) * Math.PI * 2;
       tx = s.homeX + Math.cos(a) * CONFIG.noiseStrength * depth;
@@ -99,13 +101,21 @@ export default function ParticleBackground() {
         const dist = Math.sqrt(distSq);
         const falloff = 1 - dist / r;
         const f2 = falloff * falloff * depth;
-        // twist around the cursor, then push outward
-        const angle = CONFIG.swirl * f2;
+        // Orbit: inner stars keep circling (faster closer in). The orbit only applies
+        // fully inside 75% of the radius and fades to nothing at the edge, so stars
+        // leaving the field return home without a jump.
+        const weight = Math.min(1, falloff * 4);
+        s.orbit += dt * CONFIG.orbitSpeed * f2;
+        if (weight === 1 && Math.abs(s.orbit) > Math.PI) s.orbit -= Math.sign(s.orbit) * Math.PI * 2;
+        // twist and orbit around the cursor, then push outward
+        const angle = CONFIG.swirl * f2 + s.orbit * weight;
         const cos = Math.cos(angle);
         const sin = Math.sin(angle);
         const scale = 1 + (CONFIG.mouseStrength * f2) / dist;
         tx = smoothMouse.x + (dx * cos - dy * sin) * scale;
         ty = smoothMouse.y + (dx * sin + dy * cos) * scale;
+      } else {
+        s.orbit = 0;
       }
     };
 
@@ -139,6 +149,7 @@ export default function ParticleBackground() {
           layer,
           phase: Math.random() * Math.PI * 2,
           twinkleSpeed: 0.5 + Math.random() * 1.5,
+          orbit: 0,
         };
         target(s);
         s.x = s.prevX = tx;
@@ -218,7 +229,7 @@ export default function ParticleBackground() {
       for (const s of stars) {
         s.prevX = s.x;
         s.prevY = s.y;
-        target(s);
+        target(s, dt);
         s.x += (tx - s.x) * ease;
         s.y += (ty - s.y) * ease;
       }
