@@ -1,5 +1,5 @@
 import { useTheme } from "next-themes";
-import { Moon, Sun } from "lucide-react";
+import ThemeIcon from "./ThemeIcon";
 import { cn } from "@/lib/utils";
 
 export default function Tab() {
@@ -32,7 +32,7 @@ export default function Tab() {
                 // isTop ? "opacity-100" : "opacity-0"
             )}
         >
-            <div className="backdrop-blur-sm bg-opacity-60 dark:bg-opacity-60 rounded-lg border border-neutral-200 bg-neutral-100 text-neutral-950 shadow-sm dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-50">
+            <div className="backdrop-blur-sm bg-opacity-60 dark:bg-opacity-60 rounded-lg border border-sand-300 bg-sand-100 text-neutral-800 shadow-sm dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-50">
                 <div className="flex gap-3 mx-5">
                     <div
                         onClick={() => handleTabChange(0)}
@@ -79,7 +79,7 @@ export default function Tab() {
                 </div>
             </div>
             <div
-                className="backdrop-blur-sm bg-opacity-60 dark:bg-opacity-60 border border-neutral-200 bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-900 rounded-lg p-3 cursor-pointer shadow-sm"
+                className="backdrop-blur-sm bg-opacity-60 dark:bg-opacity-60 border border-sand-300 bg-sand-100 dark:border-neutral-800 dark:bg-neutral-900 rounded-lg p-3 cursor-pointer shadow-sm"
                 onClick={() => {
                     if (theme === "light") {
                         setTheme("dark");
@@ -88,11 +88,7 @@ export default function Tab() {
                     }
                 }}
             >
-                {theme === "light" ? (
-                    <Sun className="theme-toggle-icon hover:text-neutral-500" />
-                ) : (
-                    <Moon className="theme-toggle-icon hover:text-neutral-500" />
-                )}
+                <ThemeIcon theme={theme} />
             </div>
         </div>
     );

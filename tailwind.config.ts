@@ -20,7 +20,14 @@ const config: Config = {
             },
             colors: {
                 background: 'var(--background)',
-                foreground: 'var(--foreground)'
+                foreground: 'var(--foreground)',
+                // warm greys for light mode surfaces
+                sand: {
+                    50: '#d1c6b0',
+                    100: '#b8aa92',
+                    200: '#a8997f',
+                    300: '#b8a98c',
+                },
             },
             borderRadius: {
                 lg: 'var(--radius)',

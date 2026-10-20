@@ -1,7 +1,7 @@
 "use client";
 import { useTheme } from "next-themes";
 import { Dispatch, SetStateAction, useEffect } from "react";
-import { Moon, Sun } from "lucide-react";
+import ThemeIcon from "./ThemeIcon";
 
 interface MobileMenuProps {
     setMenuOpened: Dispatch<SetStateAction<boolean>>;
@@ -46,37 +46,37 @@ export default function MobileMenu({ setMenuOpened }: MobileMenuProps) {
                 <div className=" flex flex-col gap-3 w-1/2 mb-3 ">
                     <div
                         onClick={() => handleTabChange(0)}
-                        className="hover:text-neutral-500 cursor-pointer backdrop-blur-sm bg-opacity-60 dark:bg-opacity-60 text-base text-center border border-neutral-200 bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-900 rounded-lg p-3 "
+                        className="hover:text-neutral-500 cursor-pointer backdrop-blur-sm bg-opacity-60 dark:bg-opacity-60 text-base text-center border border-sand-300 bg-sand-100 dark:border-neutral-800 dark:bg-neutral-900 rounded-lg p-3 "
                     >
                         Skills
                     </div>
                     <div
                         onClick={() => handleTabChange(1)}
-                        className="hover:text-neutral-500 cursor-pointer backdrop-blur-sm bg-opacity-60 dark:bg-opacity-60 text-base text-center border border-neutral-200 bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-900 rounded-lg p-3 "
+                        className="hover:text-neutral-500 cursor-pointer backdrop-blur-sm bg-opacity-60 dark:bg-opacity-60 text-base text-center border border-sand-300 bg-sand-100 dark:border-neutral-800 dark:bg-neutral-900 rounded-lg p-3 "
                     >
                         Experience
                     </div>
                     <div
                         onClick={() => handleTabChange(2)}
-                        className="hover:text-neutral-500 cursor-pointer backdrop-blur-sm bg-opacity-60 dark:bg-opacity-60 text-base text-center border border-neutral-200 bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-900 rounded-lg p-3 "
+                        className="hover:text-neutral-500 cursor-pointer backdrop-blur-sm bg-opacity-60 dark:bg-opacity-60 text-base text-center border border-sand-300 bg-sand-100 dark:border-neutral-800 dark:bg-neutral-900 rounded-lg p-3 "
                     >
                         Education
                     </div>
                     <div
                         onClick={() => handleTabChange(3)}
-                        className="hover:text-neutral-500 cursor-pointer backdrop-blur-sm bg-opacity-60 dark:bg-opacity-60 text-base text-center border border-neutral-200 bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-900 rounded-lg p-3 "
+                        className="hover:text-neutral-500 cursor-pointer backdrop-blur-sm bg-opacity-60 dark:bg-opacity-60 text-base text-center border border-sand-300 bg-sand-100 dark:border-neutral-800 dark:bg-neutral-900 rounded-lg p-3 "
                     >
                         Certifications
                     </div>
                     <div
                         onClick={() => handleTabChange(4)}
-                        className="hover:text-neutral-500 cursor-pointer backdrop-blur-sm bg-opacity-60 dark:bg-opacity-60 text-base text-center border border-neutral-200 bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-900 rounded-lg p-3 "
+                        className="hover:text-neutral-500 cursor-pointer backdrop-blur-sm bg-opacity-60 dark:bg-opacity-60 text-base text-center border border-sand-300 bg-sand-100 dark:border-neutral-800 dark:bg-neutral-900 rounded-lg p-3 "
                     >
                         Projects
                     </div>
                     <div
                         onClick={() => handleTabChange(5)}
-                        className="hover:text-neutral-500 cursor-pointer backdrop-blur-sm bg-opacity-60 dark:bg-opacity-60 text-base text-center border border-neutral-200 bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-900 rounded-lg p-3 "
+                        className="hover:text-neutral-500 cursor-pointer backdrop-blur-sm bg-opacity-60 dark:bg-opacity-60 text-base text-center border border-sand-300 bg-sand-100 dark:border-neutral-800 dark:bg-neutral-900 rounded-lg p-3 "
                     >
                         Stats
                     </div>
@@ -87,13 +87,13 @@ export default function MobileMenu({ setMenuOpened }: MobileMenuProps) {
                                 "_blank"
                             )
                         }
-                        className="hover:text-neutral-500 cursor-pointer backdrop-blur-sm bg-opacity-60 dark:bg-opacity-60 text-base text-center border border-neutral-200 bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-900 rounded-lg p-3 "
+                        className="hover:text-neutral-500 cursor-pointer backdrop-blur-sm bg-opacity-60 dark:bg-opacity-60 text-base text-center border border-sand-300 bg-sand-100 dark:border-neutral-800 dark:bg-neutral-900 rounded-lg p-3 "
                     >
                         Resume
                     </div>
                 </div>
                 <div
-                    className="backdrop-blur-sm bg-opacity-60 dark:bg-opacity-60 border border-neutral-200 bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-900 rounded-lg p-3 cursor-pointer"
+                    className="backdrop-blur-sm bg-opacity-60 dark:bg-opacity-60 border border-sand-300 bg-sand-100 dark:border-neutral-800 dark:bg-neutral-900 rounded-lg p-3 cursor-pointer"
                     onClick={() => {
                         if (theme === "light") {
                             setTheme("dark");
@@ -102,11 +102,7 @@ export default function MobileMenu({ setMenuOpened }: MobileMenuProps) {
                         }
                     }}
                 >
-                    {theme === "light" ? (
-                        <Sun className="theme-toggle-icon hover:text-neutral-500" />
-                    ) : (
-                        <Moon className="theme-toggle-icon hover:text-neutral-500" />
-                    )}
+                    <ThemeIcon theme={theme} />
                 </div>
             </div>
         </>

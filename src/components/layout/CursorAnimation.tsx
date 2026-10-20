@@ -5,12 +5,14 @@ import { createNoise3D } from "simplex-noise";
 
 const THEME_CONFIG = {
   light: {
-    background: "rgb(225, 225, 225)",
-    particle: "rgb(0, 0, 0)",
+    background: "rgb(207, 194, 169)",
+    particle: "rgb(70, 48, 30)",
+    layerAlpha: [0.7, 0.8, 0.9], // per LAYERS entry; small specks need more opacity on light
   },
   dark: {
     background: "rgb(17, 17, 17)",
     particle: "rgb(225, 225, 225)",
+    layerAlpha: [0.35, 0.6, 0.95],
   },
 };
 
@@ -36,9 +38,9 @@ const CONFIG = {
 
 // Faint distant stars move and react less than bright near ones, giving depth
 const LAYERS = [
-  { share: 0.72, minSize: 0.5, maxSize: 0.55, alpha: 0.35, depth: 0.5, round: false },
-  { share: 0.2, minSize: 0.7, maxSize: 0.85, alpha: 0.6, depth: 0.75, round: false },
-  { share: 0.08, minSize: 0.85, maxSize: 1, alpha: 0.95, depth: 1, round: true },
+  { share: 0.72, minSize: 0.5, maxSize: 0.55, depth: 0.5, round: false },
+  { share: 0.2, minSize: 0.7, maxSize: 0.85, depth: 0.75, round: false },
+  { share: 0.08, minSize: 0.85, maxSize: 1, depth: 1, round: true },
 ];
 
 type Star = {
@@ -160,7 +162,7 @@ export default function ParticleBackground() {
       // One fill for still stars and one stroke for streaks, per layer
       for (let l = 0; l < LAYERS.length; l++) {
         const layer = LAYERS[l];
-        ctx.globalAlpha = layer.alpha * fade;
+        ctx.globalAlpha = colors.layerAlpha[l] * fade;
 
         ctx.beginPath();
         for (const s of stars) {
